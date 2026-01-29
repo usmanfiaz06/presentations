@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SERA 2026 - العرض الفني</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap');
 
         * {
             margin: 0;
@@ -14,115 +14,147 @@
         }
 
         :root {
-            --dark-blue: #1e3a5f;
-            --light-blue: #4a90d9;
-            --green: #7ab141;
+            --dark-blue: #1a365d;
+            --medium-blue: #2c5282;
+            --light-blue: #3182ce;
+            --sky-blue: #4299e1;
+            --green: #48bb78;
+            --light-green: #68d391;
             --white: #ffffff;
-            --light-gray: #f5f5f5;
+            --light-gray: #f7fafc;
+            --gray: #e2e8f0;
         }
 
         body {
             font-family: 'Cairo', sans-serif;
-            background: #f0f0f0;
+            background: #1a202c;
             direction: rtl;
+            padding: 20px;
         }
 
+        /* Slide Container */
         .slide {
-            width: 1456px;
-            height: 816px;
+            width: 1280px;
+            height: 720px;
             background: var(--white);
-            margin: 20px auto;
+            margin: 30px auto;
             position: relative;
             overflow: hidden;
             page-break-after: always;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            border-radius: 4px;
         }
 
-        /* Top Border Design */
+        /* ==================== TOP BORDER ==================== */
         .top-border {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 40px;
+            height: 35px;
+            z-index: 10;
         }
 
-        .top-border .green-bar {
+        .top-border::before {
+            content: '';
             position: absolute;
             top: 0;
             right: 0;
-            width: 25%;
-            height: 15px;
+            width: 320px;
+            height: 14px;
             background: var(--green);
         }
 
-        .top-border .blue-bar {
+        .top-border::after {
+            content: '';
             position: absolute;
-            top: 20px;
+            top: 18px;
             left: 0;
-            width: 85%;
-            height: 8px;
+            right: 80px;
+            height: 6px;
             background: var(--dark-blue);
         }
 
-        /* Bottom Border Design */
+        /* ==================== BOTTOM BORDER ==================== */
         .bottom-border {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            height: 50px;
+            height: 45px;
+            z-index: 10;
         }
 
-        .bottom-border .green-line {
+        .bottom-border::before {
+            content: '';
             position: absolute;
-            bottom: 30px;
-            left: 50px;
-            right: 50px;
+            bottom: 28px;
+            left: 60px;
+            right: 60px;
             height: 4px;
             background: var(--green);
         }
 
-        .bottom-border .blue-line {
+        .bottom-border::after {
+            content: '';
             position: absolute;
-            bottom: 20px;
-            left: 50px;
-            right: 50px;
+            bottom: 18px;
+            left: 60px;
+            right: 60px;
             height: 4px;
             background: var(--dark-blue);
         }
 
         .page-number {
             position: absolute;
-            bottom: 25px;
-            left: 50px;
-            font-size: 24px;
+            bottom: 18px;
+            left: 60px;
+            font-size: 22px;
             font-weight: 700;
             color: var(--light-blue);
+            z-index: 11;
         }
 
-        /* Title Slide */
+        /* ==================== TITLE SLIDE ==================== */
         .title-slide {
             display: flex;
+            flex-direction: row-reverse;
         }
 
         .title-slide .image-section {
             width: 50%;
             height: 100%;
             position: relative;
-            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--light-blue) 100%);
-            clip-path: polygon(0 0, 85% 0, 100% 50%, 85% 100%, 0 100%);
+            overflow: hidden;
         }
 
-        .title-slide .image-section::after {
-            content: '';
+        .title-slide .image-section .bg {
             position: absolute;
             top: 0;
-            right: -30px;
-            width: 30px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--medium-blue) 50%, var(--sky-blue) 100%);
+        }
+
+        .title-slide .image-section .arrow-shape {
+            position: absolute;
+            top: 0;
+            right: -100px;
+            width: calc(100% + 100px);
+            height: 100%;
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--medium-blue) 100%);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 15% 50%);
+        }
+
+        .title-slide .image-section .arrow-border {
+            position: absolute;
+            top: 0;
+            right: -80px;
+            width: 80px;
             height: 100%;
             background: var(--dark-blue);
-            clip-path: polygon(0 0, 100% 10%, 100% 90%, 0 100%);
+            clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 85%);
         }
 
         .title-slide .content-section {
@@ -132,27 +164,28 @@
             flex-direction: column;
             justify-content: center;
             align-items: flex-end;
-            padding: 60px;
+            padding: 60px 80px;
             text-align: right;
         }
 
         .title-slide h1 {
-            font-size: 72px;
-            font-weight: 800;
+            font-size: 68px;
+            font-weight: 900;
             color: var(--dark-blue);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
         }
 
         .title-slide h2 {
-            font-size: 36px;
+            font-size: 28px;
             font-weight: 600;
             color: var(--light-blue);
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
         .title-slide h3 {
-            font-size: 48px;
-            font-weight: 700;
+            font-size: 42px;
+            font-weight: 800;
             color: var(--dark-blue);
         }
 
@@ -160,296 +193,351 @@
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 150px;
-            height: 150px;
+            width: 120px;
+            height: 120px;
             background: var(--green);
             clip-path: polygon(0 100%, 100% 100%, 0 0);
         }
 
-        /* Table of Contents */
+        /* ==================== TABLE OF CONTENTS ==================== */
         .toc-slide .content {
-            padding: 80px 100px;
+            padding: 70px 100px 60px;
+            height: calc(100% - 80px);
         }
 
         .toc-slide h1 {
-            font-size: 56px;
-            font-weight: 800;
+            font-size: 52px;
+            font-weight: 900;
             color: var(--dark-blue);
             text-align: right;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
         }
 
         .toc-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 0;
-            border-bottom: 3px solid var(--green);
-            margin-bottom: 10px;
+            padding: 18px 0;
+            border-bottom: 3px solid;
+            margin-bottom: 8px;
+        }
+
+        .toc-item:nth-child(odd) {
+            border-color: var(--green);
         }
 
         .toc-item:nth-child(even) {
-            border-bottom-color: var(--dark-blue);
+            border-color: var(--dark-blue);
         }
 
         .toc-item span {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 600;
             color: var(--dark-blue);
         }
 
         .toc-item .page-num {
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 700;
             color: var(--light-blue);
         }
 
-        /* Section Divider */
+        /* ==================== SECTION DIVIDER ==================== */
         .section-divider {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
+            height: 100%;
         }
 
         .section-divider h2 {
-            font-size: 36px;
+            font-size: 32px;
+            font-weight: 600;
             color: var(--light-blue);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .section-divider h1 {
-            font-size: 72px;
-            font-weight: 800;
+            font-size: 64px;
+            font-weight: 900;
             color: var(--dark-blue);
         }
 
-        /* Content Slide */
+        .section-divider .subtitle {
+            font-size: 22px;
+            color: #718096;
+            margin-top: 20px;
+            font-weight: 500;
+        }
+
+        /* ==================== CONTENT SLIDE ==================== */
         .content-slide .content {
-            padding: 60px 80px;
+            padding: 55px 70px 55px;
+            height: calc(100% - 80px);
+            display: flex;
+            flex-direction: column;
         }
 
         .content-slide h1 {
-            font-size: 44px;
+            font-size: 38px;
             font-weight: 800;
             color: var(--dark-blue);
             text-align: right;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
+            flex-shrink: 0;
         }
 
-        /* Info Cards Grid */
+        /* ==================== INFO CARDS GRID ==================== */
         .info-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-            margin-bottom: 30px;
+            gap: 20px;
+            margin-bottom: 25px;
         }
 
         .info-card {
             background: var(--dark-blue);
-            border-radius: 15px;
-            padding: 25px;
+            border-radius: 16px;
+            padding: 22px 20px;
             text-align: center;
             color: var(--white);
         }
 
-        .info-card.light {
-            background: var(--light-blue);
+        .info-card .icon {
+            width: 45px;
+            height: 45px;
+            margin: 0 auto 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .info-card .icon svg {
+            width: 40px;
+            height: 40px;
+            stroke: var(--white);
+            fill: none;
+            stroke-width: 1.5;
         }
 
         .info-card h3 {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 10px;
-            opacity: 0.9;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            opacity: 0.85;
         }
 
         .info-card p {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 700;
         }
 
-        /* Detail Box */
+        /* ==================== DETAIL BOX ==================== */
         .detail-box {
             background: var(--light-gray);
             border-right: 5px solid var(--dark-blue);
-            border-radius: 0 15px 15px 0;
-            padding: 20px 30px;
-            margin-bottom: 15px;
+            border-radius: 0 12px 12px 0;
+            padding: 14px 22px;
+            margin-bottom: 12px;
         }
 
         .detail-box h4 {
-            font-size: 20px;
+            font-size: 16px;
             font-weight: 700;
             color: var(--dark-blue);
-            margin-bottom: 10px;
+            margin-bottom: 6px;
         }
 
         .detail-box p {
-            font-size: 18px;
-            color: #333;
+            font-size: 15px;
+            color: #4a5568;
             line-height: 1.6;
         }
 
-        /* Bullet Points */
-        .bullet-list {
-            list-style: none;
-            padding-right: 20px;
+        /* ==================== EVENT CARDS ==================== */
+        .event-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            flex: 1;
+            overflow: hidden;
         }
 
-        .bullet-list li {
-            position: relative;
-            padding-right: 30px;
-            margin-bottom: 15px;
-            font-size: 20px;
-            color: #333;
-            line-height: 1.5;
-        }
-
-        .bullet-list li::before {
-            content: '';
-            position: absolute;
-            right: 0;
-            top: 10px;
-            width: 12px;
-            height: 12px;
-            background: var(--green);
-            border-radius: 50%;
-        }
-
-        /* Rounded box for content */
-        .rounded-box {
-            background: var(--white);
-            border: 3px solid var(--light-blue);
-            border-radius: 20px;
-            padding: 15px 25px;
-            margin-bottom: 12px;
-            font-size: 18px;
-            color: var(--dark-blue);
-        }
-
-        /* Two Column Layout */
-        .two-columns {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-        }
-
-        /* Event Card */
         .event-card {
-            background: linear-gradient(135deg, var(--dark-blue), var(--light-blue));
-            border-radius: 20px;
-            padding: 30px;
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--medium-blue) 100%);
+            border-radius: 16px;
+            padding: 20px 25px;
             color: var(--white);
-            margin-bottom: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .event-card.green {
+            background: linear-gradient(135deg, #2f855a 0%, var(--green) 100%);
+        }
+
+        .event-card.pink {
+            background: linear-gradient(135deg, #b83280 0%, #d53f8c 100%);
+        }
+
+        .event-card.orange {
+            background: linear-gradient(135deg, #c05621 0%, #dd6b20 100%);
+        }
+
+        .event-card.purple {
+            background: linear-gradient(135deg, #6b46c1 0%, #805ad5 100%);
         }
 
         .event-card h2 {
-            font-size: 32px;
+            font-size: 22px;
             font-weight: 700;
-            margin-bottom: 15px;
-            border-bottom: 2px solid rgba(255,255,255,0.3);
-            padding-bottom: 15px;
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(255,255,255,0.25);
         }
 
-        .event-card .event-meta {
-            display: flex;
-            gap: 30px;
-            margin-bottom: 20px;
+        .event-card p {
+            font-size: 15px;
+            line-height: 1.7;
+            opacity: 0.95;
         }
 
-        .event-card .meta-item {
-            font-size: 18px;
+        .event-card p strong {
+            font-weight: 700;
         }
 
-        .event-card .meta-item strong {
-            display: block;
-            font-size: 14px;
-            opacity: 0.8;
-            margin-bottom: 5px;
-        }
-
-        /* Quarter Overview */
+        /* ==================== QUARTER GRID ==================== */
         .quarter-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            gap: 18px;
+            flex: 1;
         }
 
         .quarter-item {
             background: var(--dark-blue);
-            border-radius: 15px;
+            border-radius: 16px;
             padding: 20px;
             color: var(--white);
+            display: flex;
+            flex-direction: column;
         }
 
         .quarter-item h3 {
-            font-size: 20px;
+            font-size: 17px;
+            font-weight: 700;
             margin-bottom: 10px;
-            color: var(--green);
+            color: var(--light-green);
         }
 
         .quarter-item p {
-            font-size: 16px;
-            line-height: 1.5;
+            font-size: 14px;
+            line-height: 1.6;
+            opacity: 0.9;
         }
 
-        /* Print Styles */
+        .quarter-item p strong {
+            display: block;
+            margin-bottom: 3px;
+            color: var(--gray);
+            font-size: 13px;
+        }
+
+        /* ==================== CATEGORY GRID ==================== */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            flex: 1;
+        }
+
+        .category-card {
+            background: var(--dark-blue);
+            border-radius: 16px;
+            padding: 22px;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .category-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--light-green);
+        }
+
+        .category-card p {
+            font-size: 14px;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        /* ==================== SPORTS CARDS ==================== */
+        .sports-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            flex: 1;
+        }
+
+        .sports-card {
+            border-radius: 16px;
+            padding: 25px 30px;
+            color: var(--white);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .sports-card h2 {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .sports-card p {
+            font-size: 16px;
+            opacity: 0.95;
+        }
+
+        /* ==================== PRINT STYLES ==================== */
         @media print {
             body {
                 background: white;
+                padding: 0;
             }
             .slide {
                 margin: 0;
                 box-shadow: none;
                 page-break-after: always;
+                border-radius: 0;
             }
-        }
-
-        /* Small event table */
-        .event-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 16px;
-        }
-
-        .event-table th {
-            background: var(--dark-blue);
-            color: white;
-            padding: 12px;
-            text-align: right;
-        }
-
-        .event-table td {
-            padding: 10px 12px;
-            border-bottom: 1px solid #ddd;
-            text-align: right;
-        }
-
-        .event-table tr:nth-child(even) {
-            background: var(--light-gray);
         }
     </style>
 </head>
 <body>
-    <!-- Slide 1: Title -->
+
+    <!-- ==================== SLIDE 1: TITLE ==================== -->
     <div class="slide title-slide">
-        <div class="image-section"></div>
         <div class="content-section">
             <h1>SERA 2026</h1>
             <h2>هيئة تنظيم الكهرباء</h2>
             <h3>العرض الفني</h3>
         </div>
+        <div class="image-section">
+            <div class="bg"></div>
+            <div class="arrow-shape"></div>
+        </div>
         <div class="green-corner"></div>
     </div>
 
-    <!-- Slide 2: Table of Contents -->
+    <!-- ==================== SLIDE 2: TABLE OF CONTENTS ==================== -->
     <div class="slide toc-slide">
-        <div class="top-border">
-            <div class="green-bar"></div>
-            <div class="blue-bar"></div>
-        </div>
+        <div class="top-border"></div>
         <div class="content">
             <h1>المحتوى</h1>
             <div class="toc-item">
@@ -469,51 +557,63 @@
                 <span>فعاليات الربع الثالث (Q3)</span>
             </div>
             <div class="toc-item">
-                <span class="page-num">19</span>
+                <span class="page-num">18</span>
                 <span>فعاليات الربع الرابع (Q4)</span>
             </div>
             <div class="toc-item">
-                <span class="page-num">27</span>
+                <span class="page-num">24</span>
                 <span>الفعاليات الرياضية</span>
             </div>
         </div>
-        <div class="bottom-border">
-            <div class="green-line"></div>
-            <div class="blue-line"></div>
-        </div>
+        <div class="bottom-border"></div>
         <div class="page-number">02</div>
     </div>
 
-    <!-- Slide 3: Program Overview -->
+    <!-- ==================== SLIDE 3: PROGRAM OVERVIEW ==================== -->
     <div class="slide content-slide">
-        <div class="top-border">
-            <div class="green-bar"></div>
-            <div class="blue-bar"></div>
-        </div>
+        <div class="top-border"></div>
         <div class="content">
             <h1>نظرة عامة على البرنامج</h1>
             <div class="info-grid">
                 <div class="info-card">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    </div>
                     <h3>إجمالي الفعاليات</h3>
                     <p>44 فعالية</p>
                 </div>
-                <div class="info-card light">
-                    <h3>فعاليات الربع الأول</h3>
+                <div class="info-card">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <h3>فعاليات Q1</h3>
                     <p>9 فعاليات</p>
                 </div>
                 <div class="info-card">
-                    <h3>فعاليات الربع الثاني</h3>
-                    <p>8 فعاليات</p>
-                </div>
-                <div class="info-card light">
-                    <h3>فعاليات الربع الثالث</h3>
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    </div>
+                    <h3>فعاليات Q2</h3>
                     <p>8 فعاليات</p>
                 </div>
                 <div class="info-card">
-                    <h3>فعاليات الربع الرابع</h3>
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <h3>فعاليات Q3</h3>
+                    <p>8 فعاليات</p>
+                </div>
+                <div class="info-card">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <h3>فعاليات Q4</h3>
                     <p>16 فعالية</p>
                 </div>
-                <div class="info-card light">
+                <div class="info-card">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                    </div>
                     <h3>الفعاليات الرياضية</h3>
                     <p>3 فعاليات</p>
                 </div>
@@ -527,91 +627,84 @@
                 <p>15% على جميع الفعاليات</p>
             </div>
         </div>
-        <div class="bottom-border">
-            <div class="green-line"></div>
-            <div class="blue-line"></div>
-        </div>
+        <div class="bottom-border"></div>
         <div class="page-number">03</div>
     </div>
 
-    <!-- Slide 4: Event Categories -->
+    <!-- ==================== SLIDE 4: EVENT CATEGORIES ==================== -->
     <div class="slide content-slide">
-        <div class="top-border">
-            <div class="green-bar"></div>
-            <div class="blue-bar"></div>
-        </div>
+        <div class="top-border"></div>
         <div class="content">
             <h1>فئات الفعاليات</h1>
-            <div class="quarter-grid">
-                <div class="quarter-item">
-                    <h3>المؤتمرات والاحتفالات الكبرى</h3>
+            <div class="category-grid">
+                <div class="category-card">
+                    <h3>المؤتمرات والاحتفالات</h3>
                     <p>الاجتماع السنوي، احتفالات الأعياد، اليوم الوطني، حفل نهاية العام</p>
                 </div>
-                <div class="quarter-item">
+                <div class="category-card">
                     <h3>الاحتفالات الوطنية</h3>
-                    <p>يوم التأسيس، يوم العلم السعودي، اليوم الوطني</p>
+                    <p>يوم التأسيس، يوم العلم السعودي، اليوم الوطني (96)</p>
                 </div>
-                <div class="quarter-item">
+                <div class="category-card">
                     <h3>التوعية الصحية</h3>
                     <p>التبرع بالدم، مكافحة التدخين، الصحة النفسية، السكري</p>
                 </div>
-                <div class="quarter-item">
+                <div class="category-card">
                     <h3>التطوير المهني</h3>
-                    <p>يوم الإبداع والابتكار، تزوّد، يوم الجودة</p>
+                    <p>يوم الإبداع والابتكار، برنامج تزوّد، يوم الجودة</p>
                 </div>
-                <div class="quarter-item">
+                <div class="category-card">
                     <h3>المسؤولية الاجتماعية</h3>
                     <p>حملة إحسان، كسوة فرح، يوم التطوع</p>
                 </div>
-                <div class="quarter-item">
-                    <h3>الفعاليات الموسمية والعائلية</h3>
+                <div class="category-card">
+                    <h3>الفعاليات العائلية</h3>
                     <p>صيف سيرا، شتوية سيرا، يوم الطفل العالمي</p>
                 </div>
             </div>
         </div>
-        <div class="bottom-border">
-            <div class="green-line"></div>
-            <div class="blue-line"></div>
-        </div>
+        <div class="bottom-border"></div>
         <div class="page-number">04</div>
     </div>
 
-    <!-- Slide 5: Q1 Section Divider -->
-    <div class="slide section-divider">
-        <div class="top-border">
-            <div class="green-bar"></div>
-            <div class="blue-bar"></div>
+    <!-- ==================== SLIDE 5: Q1 SECTION DIVIDER ==================== -->
+    <div class="slide">
+        <div class="top-border"></div>
+        <div class="section-divider">
+            <h2>القسم الأول</h2>
+            <h1>فعاليات الربع الأول</h1>
+            <p class="subtitle">9 فعاليات | يناير - مارس 2026</p>
         </div>
-        <h2>القسم الأول</h2>
-        <h1>فعاليات الربع الأول (Q1)</h1>
-        <p style="font-size: 24px; color: #666; margin-top: 20px;">9 فعاليات | يناير - مارس 2026</p>
-        <div class="bottom-border">
-            <div class="green-line"></div>
-            <div class="blue-line"></div>
-        </div>
+        <div class="bottom-border"></div>
         <div class="page-number">05</div>
     </div>
 
-    <!-- Slide 6: Q1 Event 1 - Annual Meeting -->
+    <!-- ==================== SLIDE 6: Q1 EVENT 1 ==================== -->
     <div class="slide content-slide">
-        <div class="top-border">
-            <div class="green-bar"></div>
-            <div class="blue-bar"></div>
-        </div>
+        <div class="top-border"></div>
         <div class="content">
             <h1>1. الاجتماع السنوي 2026</h1>
             <div class="info-grid">
                 <div class="info-card">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    </div>
                     <h3>التاريخ</h3>
                     <p>3 فبراير</p>
                 </div>
-                <div class="info-card light">
-                    <h3>الفئة</h3>
-                    <p>مؤتمر مؤسسي</p>
-                </div>
                 <div class="info-card">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
                     <h3>الحضور المتوقع</h3>
                     <p>300 شخص</p>
+                </div>
+                <div class="info-card">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <h3>المستوى</h3>
+                    <p>كبير (Major)</p>
                 </div>
             </div>
             <div class="detail-box">
@@ -624,216 +717,151 @@
             </div>
             <div class="detail-box">
                 <h4>المتطلبات السمعية والبصرية</h4>
-                <p>شاشة LED P2.5 بحجم 5م×3م، نظام صوت Line-array، 6 ميكروفونات لاسلكية، بث مباشر</p>
+                <p>شاشة LED P2.5 (5م×3م)، نظام صوت Line-array، 6 ميكروفونات لاسلكية، بث مباشر</p>
             </div>
             <div class="detail-box">
                 <h4>الخدمات الرئيسية</h4>
-                <p>ترجمة فورية عربي/إنجليزي، مقدم برامج محترف، نظام تسجيل QR، تصوير فوتوغرافي (2)، تصوير فيديو (2)، مطبوعات</p>
+                <p>ترجمة فورية عربي/إنجليزي، مقدم برامج محترف، نظام تسجيل QR، تصوير (2)، فيديو (2)، مطبوعات</p>
             </div>
         </div>
-        <div class="bottom-border">
-            <div class="green-line"></div>
-            <div class="blue-line"></div>
-        </div>
+        <div class="bottom-border"></div>
         <div class="page-number">06</div>
     </div>
 
-    <!-- Slide 7: Q1 Event 2 - Founding Day -->
+    <!-- ==================== SLIDE 7: Q1 EVENTS 2-3 ==================== -->
     <div class="slide content-slide">
-        <div class="top-border">
-            <div class="green-bar"></div>
-            <div class="blue-bar"></div>
-        </div>
+        <div class="top-border"></div>
         <div class="content">
-            <h1>2. يوم التأسيس</h1>
-            <div class="info-grid">
-                <div class="info-card">
-                    <h3>التاريخ</h3>
-                    <p>22 فبراير</p>
+            <h1>فعاليات الربع الأول</h1>
+            <div class="event-grid">
+                <div class="event-card">
+                    <h2>2. يوم التأسيس - 22 فبراير</h2>
+                    <p><strong>المكان:</strong> مقر SERA - داخلي | <strong>الحضور:</strong> 300 شخص | <strong>الفئة:</strong> احتفال وطني</p>
+                    <p><strong>الديكور:</strong> عروض تراثية، ثيم يوم التأسيس الوطني</p>
+                    <p><strong>الخدمات:</strong> عروض تراثية، هدايا تذكارية، تغطية مباشرة على وسائل التواصل الاجتماعي</p>
                 </div>
-                <div class="info-card light">
-                    <h3>الفئة</h3>
-                    <p>احتفال وطني</p>
+                <div class="event-card green">
+                    <h2>3. يوم تقدير الموظف - 2 مارس</h2>
+                    <p><strong>المكان:</strong> فندق 5 نجوم - حفل عشاء | <strong>الحضور:</strong> 300 شخص | <strong>الفئة:</strong> حفل تكريم</p>
+                    <p><strong>الديكور:</strong> مسرح للحفل، ديكور فاخر، إضاءة علوية، منصات الجوائز</p>
+                    <p><strong>الخدمات:</strong> 12 كأس كريستال، فرقة موسيقية حية (2.5 ساعة)، صناديق هدايا، مقدم برامج محترف</p>
                 </div>
-                <div class="info-card">
-                    <h3>الحضور المتوقع</h3>
-                    <p>300 شخص</p>
-                </div>
-            </div>
-            <div class="detail-box">
-                <h4>المكان المقترح</h4>
-                <p>مقر SERA - داخلي</p>
-            </div>
-            <div class="detail-box">
-                <h4>المسرح والديكور</h4>
-                <p>عروض تراثية، ثيم يوم التأسيس الوطني</p>
-            </div>
-            <div class="detail-box">
-                <h4>المتطلبات السمعية والبصرية</h4>
-                <p>نظام صوت للنشيد الوطني والخطابات</p>
-            </div>
-            <div class="detail-box">
-                <h4>الخدمات الرئيسية</h4>
-                <p>عروض تراثية، هدايا تذكارية، تغطية مباشرة على وسائل التواصل الاجتماعي</p>
             </div>
         </div>
-        <div class="bottom-border">
-            <div class="green-line"></div>
-            <div class="blue-line"></div>
-        </div>
+        <div class="bottom-border"></div>
         <div class="page-number">07</div>
     </div>
 
-    <!-- Slide 8: Q1 Event 3 - Employee Appreciation Day -->
+    <!-- ==================== SLIDE 8: Q1 EVENTS 4-5 ==================== -->
     <div class="slide content-slide">
-        <div class="top-border">
-            <div class="green-bar"></div>
-            <div class="blue-bar"></div>
-        </div>
+        <div class="top-border"></div>
         <div class="content">
-            <h1>3. يوم تقدير الموظف</h1>
-            <div class="info-grid">
-                <div class="info-card">
-                    <h3>التاريخ</h3>
-                    <p>2 مارس</p>
+            <h1>فعاليات الربع الأول</h1>
+            <div class="event-grid">
+                <div class="event-card pink">
+                    <h2>4. اليوم العالمي للمرأة - 8 مارس</h2>
+                    <p><strong>المكان:</strong> مكان أنيق أو قسم السيدات في فندق | <strong>الحضور:</strong> 150 شخص</p>
+                    <p><strong>الديكور:</strong> ديكور أنثوي أنيق، تنسيقات زهور فاخرة</p>
+                    <p><strong>الخدمات:</strong> متحدثة رئيسية + جلسة نقاشية (3 متحدثات)، ركن تصوير، حقائب هدايا، مصورة</p>
                 </div>
-                <div class="info-card light">
-                    <h3>الفئة</h3>
-                    <p>حفل تكريم</p>
+                <div class="event-card green">
+                    <h2>5. يوم العلم السعودي - 11 مارس</h2>
+                    <p><strong>المكان:</strong> مقر SERA - البهو والمنطقة الخارجية | <strong>الحضور:</strong> 300 شخص</p>
+                    <p><strong>الديكور:</strong> علم سعودي كبير (5م+)، ثيم أخضر وأبيض وطني</p>
+                    <p><strong>الخدمات:</strong> مراسم رفع العلم، هدايا تذكارية، تغطية مباشرة على وسائل التواصل</p>
                 </div>
-                <div class="info-card">
-                    <h3>الحضور المتوقع</h3>
-                    <p>300 شخص</p>
-                </div>
-            </div>
-            <div class="detail-box">
-                <h4>المكان المقترح</h4>
-                <p>فندق 5 نجوم - حفل عشاء بطاولات مستديرة</p>
-            </div>
-            <div class="detail-box">
-                <h4>المسرح والديكور</h4>
-                <p>مسرح للحفل، ديكور فاخر، إضاءة علوية، منصات الجوائز</p>
-            </div>
-            <div class="detail-box">
-                <h4>المتطلبات السمعية والبصرية</h4>
-                <p>نظام صوت ومرئيات كامل، أضواء للجوائز، نظام موسيقى خلفية</p>
-            </div>
-            <div class="detail-box">
-                <h4>الخدمات الرئيسية</h4>
-                <p>12 كأس كريستال، فرقة موسيقية حية (2.5 ساعة)، صناديق هدايا، مقدم برامج محترف، فريق تصوير كامل</p>
             </div>
         </div>
-        <div class="bottom-border">
-            <div class="green-line"></div>
-            <div class="blue-line"></div>
-        </div>
+        <div class="bottom-border"></div>
         <div class="page-number">08</div>
     </div>
 
-    <!-- Slide 9: Q1 Events 4-6 -->
+    <!-- ==================== SLIDE 9: Q1 EVENTS 6-7 ==================== -->
     <div class="slide content-slide">
-        <div class="top-border">
-            <div class="green-bar"></div>
-            <div class="blue-bar"></div>
-        </div>
+        <div class="top-border"></div>
         <div class="content">
-            <h1>فعاليات الربع الأول (تابع)</h1>
-            <div class="event-card">
-                <h2>4. اليوم العالمي للمرأة - 8 مارس</h2>
-                <p><strong>المكان:</strong> مكان أنيق أو قسم السيدات في فندق</p>
-                <p><strong>الديكور:</strong> ديكور أنثوي أنيق، تنسيقات زهور فاخرة</p>
-                <p><strong>الخدمات:</strong> متحدثة رئيسية + جلسة نقاشية (3 متحدثات)، ركن تصوير، حقائب هدايا، مصورة</p>
-            </div>
-            <div class="event-card" style="background: linear-gradient(135deg, #7ab141, #5a9131);">
-                <h2>5. يوم العلم السعودي - 11 مارس</h2>
-                <p><strong>المكان:</strong> مقر SERA - البهو والمنطقة الخارجية</p>
-                <p><strong>الديكور:</strong> علم سعودي كبير (5م+)، ثيم أخضر وأبيض وطني</p>
-                <p><strong>الخدمات:</strong> مراسم رفع العلم، هدايا تذكارية، تغطية مباشرة على وسائل التواصل</p>
-            </div>
-            <div class="event-card">
-                <h2>6. إفطار رمضان - منتصف مارس</h2>
-                <p><strong>المكان:</strong> خيمة رمضانية في فندق 5 نجوم</p>
-                <p><strong>الديكور:</strong> ديكور رمضاني تقليدي: فوانيس، أهلّة، مجلس VIP</p>
-                <p><strong>الخدمات:</strong> بوفيه إفطار فاخر، عازف عود، صناديق هدايا رمضانية، ترتيب مصلى</p>
+            <h1>فعاليات الربع الأول</h1>
+            <div class="event-grid">
+                <div class="event-card">
+                    <h2>6. إفطار رمضان - منتصف مارس</h2>
+                    <p><strong>المكان:</strong> خيمة رمضانية في فندق 5 نجوم | <strong>الحضور:</strong> 300 شخص</p>
+                    <p><strong>الديكور:</strong> ديكور رمضاني تقليدي: فوانيس، أهلّة، مجلس VIP</p>
+                    <p><strong>الخدمات:</strong> بوفيه إفطار فاخر، عازف عود، صناديق هدايا رمضانية، ترتيب مصلى</p>
+                </div>
+                <div class="event-card pink">
+                    <h2>7. يوم الأم - 21 مارس</h2>
+                    <p><strong>المكان:</strong> قسم خاص في مطعم أنيق | <strong>الحضور:</strong> 130 شخص</p>
+                    <p><strong>الديكور:</strong> ثيم الزهور، منطقة تصوير</p>
+                    <p><strong>الخدمات:</strong> هدايا زهور، هدايا خاصة للأمهات، ترفيه، تصوير فوتوغرافي</p>
+                </div>
             </div>
         </div>
-        <div class="bottom-border">
-            <div class="green-line"></div>
-            <div class="blue-line"></div>
-        </div>
+        <div class="bottom-border"></div>
         <div class="page-number">09</div>
     </div>
 
-    <!-- Slide 10: Q1 Events 7-9 -->
+    <!-- ==================== SLIDE 10: Q1 EVENTS 8-9 ==================== -->
     <div class="slide content-slide">
-        <div class="top-border">
-            <div class="green-bar"></div>
-            <div class="blue-bar"></div>
-        </div>
+        <div class="top-border"></div>
         <div class="content">
-            <h1>فعاليات الربع الأول (تابع)</h1>
-            <div class="event-card">
-                <h2>7. يوم الأم - 21 مارس</h2>
-                <p><strong>المكان:</strong> قسم خاص في مطعم أنيق | <strong>الحضور:</strong> 130 شخص</p>
-                <p><strong>الديكور:</strong> ثيم الزهور، منطقة تصوير</p>
-                <p><strong>الخدمات:</strong> هدايا زهور، هدايا خاصة للأمهات، ترفيه، تصوير فوتوغرافي</p>
-            </div>
-            <div class="event-card" style="background: linear-gradient(135deg, #7ab141, #5a9131);">
-                <h2>8. المبادرة الخضراء السعودية - 27 مارس</h2>
-                <p><strong>المكان:</strong> مقر SERA - منطقة المعارض | <strong>الحضور:</strong> 250 شخص</p>
-                <p><strong>الديكور:</strong> أكشاك بثيم الاستدامة الخضراء، عروض بيئية</p>
-                <p><strong>الخدمات:</strong> خبير بيئي، معارض خضراء، هدايا صديقة للبيئة، عروض استدامة</p>
-            </div>
-            <div class="event-card">
-                <h2>9. حملة إحسان الخيرية - مارس</h2>
-                <p><strong>المكان:</strong> مقر SERA - منطقة البهو | <strong>الحضور:</strong> 200 شخص</p>
-                <p><strong>الديكور:</strong> عروض منصة إحسان، محطات التبرع</p>
-                <p><strong>الخدمات:</strong> كشك توعية بالحملة، محطات تبرع QR، عرض قصص التأثير</p>
+            <h1>فعاليات الربع الأول</h1>
+            <div class="event-grid">
+                <div class="event-card green">
+                    <h2>8. المبادرة الخضراء السعودية - 27 مارس</h2>
+                    <p><strong>المكان:</strong> مقر SERA - منطقة المعارض | <strong>الحضور:</strong> 250 شخص</p>
+                    <p><strong>الديكور:</strong> أكشاك بثيم الاستدامة الخضراء، عروض بيئية</p>
+                    <p><strong>الخدمات:</strong> خبير بيئي، معارض خضراء، هدايا صديقة للبيئة، عروض استدامة</p>
+                </div>
+                <div class="event-card">
+                    <h2>9. حملة إحسان الخيرية - مارس</h2>
+                    <p><strong>المكان:</strong> مقر SERA - منطقة البهو | <strong>الحضور:</strong> 200 شخص</p>
+                    <p><strong>الديكور:</strong> عروض منصة إحسان، محطات التبرع</p>
+                    <p><strong>الخدمات:</strong> كشك توعية بالحملة، محطات تبرع QR، عرض قصص التأثير</p>
+                </div>
             </div>
         </div>
-        <div class="bottom-border">
-            <div class="green-line"></div>
-            <div class="blue-line"></div>
-        </div>
+        <div class="bottom-border"></div>
         <div class="page-number">10</div>
     </div>
 
-    <!-- Slide 11: Q2 Section Divider -->
-    <div class="slide section-divider">
-        <div class="top-border">
-            <div class="green-bar"></div>
-            <div class="blue-bar"></div>
+    <!-- ==================== SLIDE 11: Q2 SECTION DIVIDER ==================== -->
+    <div class="slide">
+        <div class="top-border"></div>
+        <div class="section-divider">
+            <h2>القسم الثاني</h2>
+            <h1>فعاليات الربع الثاني</h1>
+            <p class="subtitle">8 فعاليات | أبريل - يونيو 2026</p>
         </div>
-        <h2>القسم الثاني</h2>
-        <h1>فعاليات الربع الثاني (Q2)</h1>
-        <p style="font-size: 24px; color: #666; margin-top: 20px;">8 فعاليات | أبريل - يونيو 2026</p>
-        <div class="bottom-border">
-            <div class="green-line"></div>
-            <div class="blue-line"></div>
-        </div>
+        <div class="bottom-border"></div>
         <div class="page-number">11</div>
     </div>
 
-    <!-- Slide 12: Q2 Event 10 - Eid Al-Fitr -->
+    <!-- ==================== SLIDE 12: Q2 EVENT 10 ==================== -->
     <div class="slide content-slide">
-        <div class="top-border">
-            <div class="green-bar"></div>
-            <div class="blue-bar"></div>
-        </div>
+        <div class="top-border"></div>
         <div class="content">
             <h1>10. احتفال عيد الفطر</h1>
             <div class="info-grid">
                 <div class="info-card">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    </div>
                     <h3>التاريخ</h3>
                     <p>أوائل أبريل</p>
                 </div>
-                <div class="info-card light">
-                    <h3>الفئة</h3>
-                    <p>حفل كبير</p>
-                </div>
                 <div class="info-card">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
                     <h3>الحضور المتوقع</h3>
                     <p>300 شخص</p>
+                </div>
+                <div class="info-card">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <h3>المستوى</h3>
+                    <p>كبير (Major)</p>
                 </div>
             </div>
             <div class="detail-box">
@@ -853,121 +881,108 @@
                 <p>فرقة عرضة + موسيقى حية، هدايا العيد، ركن للأطفال (اختياري)، مقدم برامج محترف</p>
             </div>
         </div>
-        <div class="bottom-border">
-            <div class="green-line"></div>
-            <div class="blue-line"></div>
-        </div>
+        <div class="bottom-border"></div>
         <div class="page-number">12</div>
     </div>
 
-    <!-- Slide 13: Q2 Events 11-13 -->
+    <!-- ==================== SLIDE 13: Q2 EVENTS 11-12 ==================== -->
     <div class="slide content-slide">
-        <div class="top-border">
-            <div class="green-bar"></div>
-            <div class="blue-bar"></div>
-        </div>
+        <div class="top-border"></div>
         <div class="content">
-            <h1>فعاليات الربع الثاني (تابع)</h1>
-            <div class="event-card">
-                <h2>11. يوم الإبداع والابتكار - 21 أبريل</h2>
-                <p><strong>المكان:</strong> مركز مؤتمرات | <strong>الحضور:</strong> 200 شخص</p>
-                <p><strong>الديكور:</strong> مسرح رئيسي + 10 أكشاك ابتكار للأقسام</p>
-                <p><strong>الخدمات:</strong> متحدث رئيسي، مسابقة ابتكار، 7 جوائز، تصويت تفاعلي</p>
-            </div>
-            <div class="event-card" style="background: linear-gradient(135deg, #7ab141, #5a9131);">
-                <h2>12. اليوم العالمي للشاي - 21 مايو</h2>
-                <p><strong>المكان:</strong> مقر SERA - المناطق المشتركة | <strong>الحضور:</strong> 250 شخص</p>
-                <p><strong>الديكور:</strong> ديكور بثيم الشاي، 3 محطات خدمة</p>
-                <p><strong>الخدمات:</strong> محطات شاي عربي/إنجليزي/آسيوي، مرافقات ذواقة، عروض ثقافة الشاي</p>
-            </div>
-            <div class="event-card">
-                <h2>13. كسوة فرح - مايو</h2>
-                <p><strong>المكان:</strong> مقر SERA - منطقة الجمع | <strong>الحضور:</strong> 200 شخص</p>
-                <p><strong>الديكور:</strong> أكشاك جمع، محطات فرز، لافتات المسؤولية الاجتماعية</p>
-                <p><strong>الخدمات:</strong> نقاط جمع، تنسيق المتطوعين، لوجستيات الفرز والتوزيع</p>
+            <h1>فعاليات الربع الثاني</h1>
+            <div class="event-grid">
+                <div class="event-card orange">
+                    <h2>11. يوم الإبداع والابتكار - 21 أبريل</h2>
+                    <p><strong>المكان:</strong> مركز مؤتمرات | <strong>الحضور:</strong> 200 شخص</p>
+                    <p><strong>الديكور:</strong> مسرح رئيسي + 10 أكشاك ابتكار للأقسام</p>
+                    <p><strong>الخدمات:</strong> متحدث رئيسي، مسابقة ابتكار، 7 جوائز، تصويت تفاعلي</p>
+                </div>
+                <div class="event-card">
+                    <h2>12. اليوم العالمي للشاي - 21 مايو</h2>
+                    <p><strong>المكان:</strong> مقر SERA - المناطق المشتركة | <strong>الحضور:</strong> 250 شخص</p>
+                    <p><strong>الديكور:</strong> ديكور بثيم الشاي، 3 محطات خدمة</p>
+                    <p><strong>الخدمات:</strong> محطات شاي عربي/إنجليزي/آسيوي، مرافقات ذواقة، عروض ثقافة الشاي</p>
+                </div>
             </div>
         </div>
-        <div class="bottom-border">
-            <div class="green-line"></div>
-            <div class="blue-line"></div>
-        </div>
+        <div class="bottom-border"></div>
         <div class="page-number">13</div>
     </div>
 
-    <!-- Slide 14: Q2 Events 14-17 -->
+    <!-- ==================== SLIDE 14: Q2 EVENTS 13-17 ==================== -->
     <div class="slide content-slide">
-        <div class="top-border">
-            <div class="green-bar"></div>
-            <div class="blue-bar"></div>
-        </div>
+        <div class="top-border"></div>
         <div class="content">
-            <h1>فعاليات الربع الثاني (تابع)</h1>
+            <h1>فعاليات الربع الثاني</h1>
             <div class="quarter-grid">
                 <div class="quarter-item">
-                    <h3>14. اليوم العالمي لمكافحة التدخين - 31 مايو</h3>
-                    <p><strong>المكان:</strong> مقر SERA - منطقة الصحة</p>
-                    <p><strong>الخدمات:</strong> متحدث صحي، محطة فحص أول أكسيد الكربون، مواد توعوية</p>
+                    <h3>13. كسوة فرح - مايو</h3>
+                    <p><strong>المكان:</strong> مقر SERA | <strong>الحضور:</strong> 200</p>
+                    <p>نقاط جمع، تنسيق المتطوعين، لوجستيات الفرز والتوزيع</p>
+                </div>
+                <div class="quarter-item">
+                    <h3>14. مكافحة التدخين - 31 مايو</h3>
+                    <p><strong>المكان:</strong> مقر SERA | <strong>الحضور:</strong> 200</p>
+                    <p>متحدث صحي، محطة فحص CO، مواد توعوية</p>
                 </div>
                 <div class="quarter-item">
                     <h3>15. يوم التبرع بالدم - 14 يونيو</h3>
-                    <p><strong>المكان:</strong> مقر SERA - منطقة طبية</p>
-                    <p><strong>الخدمات:</strong> شراكة مع الهلال الأحمر، حملة قبل الفعالية، هدايا وشهادات للمتبرعين</p>
+                    <p><strong>المكان:</strong> مقر SERA | <strong>الحضور:</strong> 120</p>
+                    <p>شراكة الهلال الأحمر، هدايا وشهادات للمتبرعين</p>
                 </div>
                 <div class="quarter-item">
                     <h3>16. يوم الأب - 15 يونيو</h3>
-                    <p><strong>المكان:</strong> مطعم / قاعة فعاليات</p>
-                    <p><strong>الخدمات:</strong> هدايا للآباء (50% مفترض)، أنشطة بناء فريق</p>
-                </div>
-                <div class="quarter-item">
-                    <h3>17. احتفال عيد الأضحى - منتصف يونيو</h3>
-                    <p><strong>المكان:</strong> القاعة الكبرى في فندق 5 نجوم</p>
-                    <p><strong>الخدمات:</strong> عرضة + موسيقى حية، وليمة لحم، هدايا العيد، مقدم برامج محترف</p>
+                    <p><strong>المكان:</strong> مطعم / قاعة | <strong>الحضور:</strong> 160</p>
+                    <p>هدايا للآباء، أنشطة بناء فريق</p>
                 </div>
             </div>
+            <div class="detail-box" style="margin-top: 15px;">
+                <h4>17. احتفال عيد الأضحى - منتصف يونيو</h4>
+                <p>القاعة الكبرى في فندق 5 نجوم | 300 شخص | عرضة + موسيقى حية، وليمة، هدايا العيد، مقدم برامج</p>
+            </div>
         </div>
-        <div class="bottom-border">
-            <div class="green-line"></div>
-            <div class="blue-line"></div>
-        </div>
+        <div class="bottom-border"></div>
         <div class="page-number">14</div>
     </div>
 
-    <!-- Slide 15: Q3 Section Divider -->
-    <div class="slide section-divider">
-        <div class="top-border">
-            <div class="green-bar"></div>
-            <div class="blue-bar"></div>
+    <!-- ==================== SLIDE 15: Q3 SECTION DIVIDER ==================== -->
+    <div class="slide">
+        <div class="top-border"></div>
+        <div class="section-divider">
+            <h2>القسم الثالث</h2>
+            <h1>فعاليات الربع الثالث</h1>
+            <p class="subtitle">8 فعاليات | يوليو - سبتمبر 2026</p>
         </div>
-        <h2>القسم الثالث</h2>
-        <h1>فعاليات الربع الثالث (Q3)</h1>
-        <p style="font-size: 24px; color: #666; margin-top: 20px;">8 فعاليات | يوليو - سبتمبر 2026</p>
-        <div class="bottom-border">
-            <div class="green-line"></div>
-            <div class="blue-line"></div>
-        </div>
+        <div class="bottom-border"></div>
         <div class="page-number">15</div>
     </div>
 
-    <!-- Slide 16: Q3 Event 18 - Summer SERA -->
+    <!-- ==================== SLIDE 16: Q3 EVENT 18 ==================== -->
     <div class="slide content-slide">
-        <div class="top-border">
-            <div class="green-bar"></div>
-            <div class="blue-bar"></div>
-        </div>
+        <div class="top-border"></div>
         <div class="content">
             <h1>18. صيف سيرا</h1>
             <div class="info-grid">
                 <div class="info-card">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    </div>
                     <h3>التاريخ</h3>
                     <p>20 يوليو</p>
                 </div>
-                <div class="info-card light">
-                    <h3>الفئة</h3>
-                    <p>فعالية عائلية موسمية</p>
-                </div>
                 <div class="info-card">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
                     <h3>الحضور المتوقع</h3>
                     <p>500 شخص</p>
+                </div>
+                <div class="info-card">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <h3>المستوى</h3>
+                    <p>كبير (Major)</p>
                 </div>
             </div>
             <div class="detail-box">
@@ -987,267 +1002,231 @@
                 <p>ترفيه رئيسي، منطقة أطفال، 10 أكشاك ألعاب، مهرجان طعام، سحب، هدايا عائلية</p>
             </div>
         </div>
-        <div class="bottom-border">
-            <div class="green-line"></div>
-            <div class="blue-line"></div>
-        </div>
+        <div class="bottom-border"></div>
         <div class="page-number">16</div>
     </div>
 
-    <!-- Slide 17: Q3 Events 19-22 -->
+    <!-- ==================== SLIDE 17: Q3 EVENTS 19-22 ==================== -->
     <div class="slide content-slide">
-        <div class="top-border">
-            <div class="green-bar"></div>
-            <div class="blue-bar"></div>
-        </div>
+        <div class="top-border"></div>
         <div class="content">
-            <h1>فعاليات الربع الثالث (تابع)</h1>
-            <div class="event-card">
-                <h2>19. شتوية سيرا - 19 أغسطس</h2>
-                <p><strong>المكان:</strong> مكان ترفيهي داخلي مكيف | <strong>الحضور:</strong> 300 شخص</p>
-                <p><strong>الديكور:</strong> ثيم أرض العجائب الشتوية، مؤثرات ثلجية، إضاءة محيطة</p>
-                <p><strong>الخدمات:</strong> برنامج ترفيهي، محطات طعام، ركن تصوير، أنشطة شتوية</p>
-            </div>
-            <div class="event-card" style="background: linear-gradient(135deg, #7ab141, #5a9131);">
-                <h2>20. اليوم العالمي للإسعافات الأولية - 13 سبتمبر</h2>
-                <p><strong>المكان:</strong> مقر SERA - منطقة التدريب | <strong>الحضور:</strong> 200 شخص</p>
-                <p><strong>الخدمات:</strong> ورشة تدريب CPR، حقائب إسعافات أولية، خبير مسعف، شهادات</p>
-            </div>
-            <div class="event-card">
-                <h2>21. تزوّد - تطوير المهارات - سبتمبر</h2>
-                <p><strong>المكان:</strong> مركز مؤتمرات / تدريب | <strong>الحضور:</strong> 200 شخص</p>
-                <p><strong>الخدمات:</strong> مدربين خبراء (جلستين)، مواد تدريبية، شهادات، برنامج يوم كامل</p>
+            <h1>فعاليات الربع الثالث</h1>
+            <div class="quarter-grid">
+                <div class="quarter-item">
+                    <h3>19. شتوية سيرا - 19 أغسطس</h3>
+                    <p><strong>المكان:</strong> مكان داخلي مكيف | <strong>الحضور:</strong> 300</p>
+                    <p>ثيم أرض العجائب الشتوية، مؤثرات ثلجية، برنامج ترفيهي</p>
+                </div>
+                <div class="quarter-item">
+                    <h3>20. الإسعافات الأولية - 13 سبتمبر</h3>
+                    <p><strong>المكان:</strong> مقر SERA | <strong>الحضور:</strong> 200</p>
+                    <p>ورشة CPR، حقائب إسعافات، خبير مسعف، شهادات</p>
+                </div>
+                <div class="quarter-item">
+                    <h3>21. تزوّد - سبتمبر</h3>
+                    <p><strong>المكان:</strong> مركز تدريب | <strong>الحضور:</strong> 200</p>
+                    <p>مدربين خبراء (جلستين)، مواد تدريبية، شهادات</p>
+                </div>
+                <div class="quarter-item">
+                    <h3>22. الزهايمر - 21 سبتمبر</h3>
+                    <p><strong>المكان:</strong> مقر SERA | <strong>الحضور:</strong> 200</p>
+                    <p>متحدث رعاية صحية، شرائط بنفسجية، عروض توعوية</p>
+                </div>
             </div>
         </div>
-        <div class="bottom-border">
-            <div class="green-line"></div>
-            <div class="blue-line"></div>
-        </div>
+        <div class="bottom-border"></div>
         <div class="page-number">17</div>
     </div>
 
-    <!-- Slide 18: Q3 Events 22-25 -->
+    <!-- ==================== SLIDE 18: Q3 EVENTS 23-25 ==================== -->
     <div class="slide content-slide">
-        <div class="top-border">
-            <div class="green-bar"></div>
-            <div class="blue-bar"></div>
-        </div>
+        <div class="top-border"></div>
         <div class="content">
-            <h1>فعاليات الربع الثالث (تابع)</h1>
-            <div class="quarter-grid">
-                <div class="quarter-item">
-                    <h3>22. اليوم العالمي للزهايمر - 21 سبتمبر</h3>
-                    <p><strong>المكان:</strong> مقر SERA</p>
-                    <p><strong>الخدمات:</strong> متحدث رعاية صحية، شرائط بنفسجية، عروض توعوية</p>
-                </div>
-                <div class="quarter-item">
-                    <h3>23. وش دورنا - سبتمبر</h3>
-                    <p><strong>المكان:</strong> مقر SERA - قاعة اجتماعات</p>
+            <h1>فعاليات الربع الثالث</h1>
+            <div class="event-grid">
+                <div class="event-card">
+                    <h2>23. وش دورنا - سبتمبر</h2>
+                    <p><strong>المكان:</strong> مقر SERA - قاعة اجتماعات | <strong>الحضور:</strong> 200 شخص</p>
                     <p><strong>الخدمات:</strong> ميسر محترف، تمارين تفاعلية، أدلة الأدوار، أنشطة فريق</p>
                 </div>
-                <div class="quarter-item" style="background: linear-gradient(135deg, #7ab141, #5a9131);">
-                    <h3>24. اليوم الوطني السعودي (96) - 23 سبتمبر</h3>
-                    <p><strong>المكان:</strong> مكان فاخر مع خيار خارجي</p>
-                    <p><strong>الخدمات:</strong> فرقة عرضة، عروض ثقافية، هدايا وطنية، إضاءة خضراء. يجب الحجز قبل 3-4 أشهر</p>
+                <div class="event-card green">
+                    <h2>24. اليوم الوطني السعودي (96) - 23 سبتمبر</h2>
+                    <p><strong>المكان:</strong> مكان فاخر مع خيار خارجي | <strong>الحضور:</strong> 300 شخص</p>
+                    <p><strong>الديكور:</strong> ديكور وطني أخضر فاخر، أعلام، رموز وطنية</p>
+                    <p><strong>الخدمات:</strong> فرقة عرضة، عروض ثقافية، هدايا وطنية، إضاءة خضراء. <strong>يجب الحجز قبل 3-4 أشهر</strong></p>
                 </div>
-                <div class="quarter-item">
-                    <h3>25. أسبوع البيئة - Q3</h3>
-                    <p><strong>المكان:</strong> مقر SERA - منطقة معارض (5 أيام)</p>
-                    <p><strong>الخدمات:</strong> برنامج 5 أيام، متحدثون خبراء، زراعة أشجار، ورش بيئية</p>
+                <div class="event-card">
+                    <h2>25. أسبوع البيئة - Q3</h2>
+                    <p><strong>المكان:</strong> مقر SERA - منطقة معارض (5 أيام) | <strong>الحضور:</strong> 250 شخص</p>
+                    <p><strong>الخدمات:</strong> برنامج 5 أيام، متحدثون خبراء، زراعة أشجار، ورش بيئية، أنشطة خضراء</p>
                 </div>
             </div>
         </div>
-        <div class="bottom-border">
-            <div class="green-line"></div>
-            <div class="blue-line"></div>
-        </div>
+        <div class="bottom-border"></div>
         <div class="page-number">18</div>
     </div>
 
-    <!-- Slide 19: Q4 Section Divider -->
-    <div class="slide section-divider">
-        <div class="top-border">
-            <div class="green-bar"></div>
-            <div class="blue-bar"></div>
+    <!-- ==================== SLIDE 19: Q4 SECTION DIVIDER ==================== -->
+    <div class="slide">
+        <div class="top-border"></div>
+        <div class="section-divider">
+            <h2>القسم الرابع</h2>
+            <h1>فعاليات الربع الرابع</h1>
+            <p class="subtitle">16 فعالية | أكتوبر - ديسمبر 2026</p>
         </div>
-        <h2>القسم الرابع</h2>
-        <h1>فعاليات الربع الرابع (Q4)</h1>
-        <p style="font-size: 24px; color: #666; margin-top: 20px;">16 فعالية | أكتوبر - ديسمبر 2026</p>
-        <div class="bottom-border">
-            <div class="green-line"></div>
-            <div class="blue-line"></div>
-        </div>
+        <div class="bottom-border"></div>
         <div class="page-number">19</div>
     </div>
 
-    <!-- Slide 20: Q4 Events 26-28 -->
+    <!-- ==================== SLIDE 20: Q4 EVENTS 26-28 ==================== -->
     <div class="slide content-slide">
-        <div class="top-border">
-            <div class="green-bar"></div>
-            <div class="blue-bar"></div>
-        </div>
+        <div class="top-border"></div>
         <div class="content">
             <h1>فعاليات الربع الرابع</h1>
-            <div class="event-card">
-                <h2>26. اليوم العالمي للقهوة - 1 أكتوبر</h2>
-                <p><strong>المكان:</strong> مقر SERA - المناطق المشتركة | <strong>الحضور:</strong> 250 شخص</p>
-                <p><strong>الديكور:</strong> ديكور بثيم القهوة، 3 محطات</p>
-                <p><strong>الخدمات:</strong> باريستا محترف، مراسم الدلة العربية، عروض ثقافة القهوة</p>
-            </div>
-            <div class="event-card" style="background: linear-gradient(135deg, #e91e63, #c2185b);">
-                <h2>27. يوم التوعية بسرطان الثدي - أكتوبر</h2>
-                <p><strong>المكان:</strong> مقر SERA - منطقة الصحة | <strong>الحضور:</strong> 200 شخص</p>
-                <p><strong>الديكور:</strong> ثيم الشريط الوردي، لوحات توعية، عروض معلومات</p>
-                <p><strong>الخدمات:</strong> خبير رعاية صحية، معلومات فحص، عناصر توعية وردية، مواد صحية</p>
-            </div>
-            <div class="event-card">
-                <h2>28. معرض الأمن السيبراني - أكتوبر</h2>
-                <p><strong>المكان:</strong> مقر SERA / مركز مؤتمرات | <strong>الحضور:</strong> 250 شخص</p>
-                <p><strong>الديكور:</strong> 6 أكشاك معرض تفاعلية، محطات عروض</p>
-                <p><strong>الخدمات:</strong> 6 عروض تفاعلية، 2 متحدثين خبراء، محاكاة تصيد، هدايا ترويجية</p>
+            <div class="event-grid">
+                <div class="event-card">
+                    <h2>26. اليوم العالمي للقهوة - 1 أكتوبر</h2>
+                    <p><strong>المكان:</strong> مقر SERA - المناطق المشتركة | <strong>الحضور:</strong> 250 شخص</p>
+                    <p><strong>الخدمات:</strong> باريستا محترف، مراسم الدلة العربية، عروض ثقافة القهوة</p>
+                </div>
+                <div class="event-card pink">
+                    <h2>27. التوعية بسرطان الثدي - أكتوبر</h2>
+                    <p><strong>المكان:</strong> مقر SERA - منطقة الصحة | <strong>الحضور:</strong> 200 شخص</p>
+                    <p><strong>الخدمات:</strong> خبير رعاية صحية، معلومات فحص، عناصر توعية وردية</p>
+                </div>
+                <div class="event-card">
+                    <h2>28. معرض الأمن السيبراني - أكتوبر</h2>
+                    <p><strong>المكان:</strong> مقر SERA / مركز مؤتمرات | <strong>الحضور:</strong> 250 شخص</p>
+                    <p><strong>الخدمات:</strong> 6 عروض تفاعلية، 2 متحدثين خبراء، محاكاة تصيد، هدايا ترويجية</p>
+                </div>
             </div>
         </div>
-        <div class="bottom-border">
-            <div class="green-line"></div>
-            <div class="blue-line"></div>
-        </div>
+        <div class="bottom-border"></div>
         <div class="page-number">20</div>
     </div>
 
-    <!-- Slide 21: Q4 Events 29-32 -->
+    <!-- ==================== SLIDE 21: Q4 EVENTS 29-32 ==================== -->
     <div class="slide content-slide">
-        <div class="top-border">
-            <div class="green-bar"></div>
-            <div class="blue-bar"></div>
-        </div>
+        <div class="top-border"></div>
         <div class="content">
-            <h1>فعاليات الربع الرابع (تابع)</h1>
+            <h1>فعاليات الربع الرابع</h1>
             <div class="quarter-grid">
                 <div class="quarter-item">
-                    <h3>29. اليوم العالمي للصحة النفسية - 10 أكتوبر</h3>
-                    <p><strong>المكان:</strong> مقر SERA</p>
-                    <p><strong>الخدمات:</strong> متحدث نفسي، ورشة إدارة الضغط، منطقة استرخاء (كراسي مساج)، حقائب عافية</p>
+                    <h3>29. الصحة النفسية - 10 أكتوبر</h3>
+                    <p><strong>المكان:</strong> مقر SERA | <strong>الحضور:</strong> 200</p>
+                    <p>متحدث نفسي، ورشة إدارة الضغط، منطقة استرخاء</p>
                 </div>
                 <div class="quarter-item">
-                    <h3>30. اليوم العالمي للادخار - 31 أكتوبر</h3>
-                    <p><strong>المكان:</strong> مقر SERA - قاعة اجتماعات</p>
-                    <p><strong>الخدمات:</strong> خبير مالي، أدلة ادخار، مخططات ميزانية، نشاط جدار التعهدات</p>
+                    <h3>30. يوم الادخار - 31 أكتوبر</h3>
+                    <p><strong>المكان:</strong> مقر SERA | <strong>الحضور:</strong> 200</p>
+                    <p>خبير مالي، أدلة ادخار، مخططات ميزانية</p>
                 </div>
                 <div class="quarter-item">
                     <h3>31. يوم الجودة - 10 نوفمبر</h3>
-                    <p><strong>المكان:</strong> قاعة مؤتمرات فندق أعمال</p>
-                    <p><strong>الخدمات:</strong> 7 جوائز جودة، عروض أفضل الممارسات، متحدث خبير</p>
+                    <p><strong>المكان:</strong> فندق أعمال | <strong>الحضور:</strong> 180</p>
+                    <p>7 جوائز جودة، عروض أفضل الممارسات، متحدث خبير</p>
                 </div>
                 <div class="quarter-item">
-                    <h3>32. حملة التطعيم ضد الإنفلونزا - نوفمبر</h3>
-                    <p><strong>المكان:</strong> مقر SERA - منطقة طبية</p>
-                    <p><strong>الخدمات:</strong> طاقم طبي، لوجستيات التطعيم، توعية قبل الحملة، هدايا للمشاركين</p>
+                    <h3>32. التطعيم ضد الإنفلونزا - نوفمبر</h3>
+                    <p><strong>المكان:</strong> مقر SERA | <strong>الحضور:</strong> 250</p>
+                    <p>طاقم طبي، لوجستيات التطعيم، هدايا للمشاركين</p>
                 </div>
             </div>
         </div>
-        <div class="bottom-border">
-            <div class="green-line"></div>
-            <div class="blue-line"></div>
-        </div>
+        <div class="bottom-border"></div>
         <div class="page-number">21</div>
     </div>
 
-    <!-- Slide 22: Q4 Events 33-36 -->
+    <!-- ==================== SLIDE 22: Q4 EVENTS 33-36 ==================== -->
     <div class="slide content-slide">
-        <div class="top-border">
-            <div class="green-bar"></div>
-            <div class="blue-bar"></div>
-        </div>
+        <div class="top-border"></div>
         <div class="content">
-            <h1>فعاليات الربع الرابع (تابع)</h1>
+            <h1>فعاليات الربع الرابع</h1>
             <div class="quarter-grid">
-                <div class="quarter-item" style="background: linear-gradient(135deg, #2196f3, #1976d2);">
-                    <h3>33. اليوم العالمي للسكري - 14 نوفمبر</h3>
-                    <p><strong>المكان:</strong> مقر SERA - منطقة الصحة</p>
-                    <p><strong>الخدمات:</strong> متحدث أخصائي غدد صماء، فحص سكر الدم، مواد صحية، عناصر توعية زرقاء</p>
+                <div class="quarter-item">
+                    <h3>33. يوم السكري - 14 نوفمبر</h3>
+                    <p><strong>المكان:</strong> مقر SERA | <strong>الحضور:</strong> 200</p>
+                    <p>أخصائي غدد صماء، فحص سكر الدم، عناصر توعية زرقاء</p>
                 </div>
                 <div class="quarter-item">
-                    <h3>34. اليوم العالمي للرجل - 19 نوفمبر</h3>
-                    <p><strong>المكان:</strong> قاعة فعاليات</p>
-                    <p><strong>الخدمات:</strong> مسابقات فريق، هدايا تقدير</p>
+                    <h3>34. يوم الرجل - 19 نوفمبر</h3>
+                    <p><strong>المكان:</strong> قاعة فعاليات | <strong>الحضور:</strong> 200</p>
+                    <p>مسابقات فريق، هدايا تقدير</p>
                 </div>
-                <div class="quarter-item" style="background: linear-gradient(135deg, #ff9800, #f57c00);">
-                    <h3>35. اليوم العالمي للطفل - 20 نوفمبر</h3>
-                    <p><strong>المكان:</strong> مكان ترفيهي عائلي</p>
-                    <p><strong>الخدمات:</strong> منشطين أطفال محترفين، محطات ألعاب، هدايا للأطفال</p>
+                <div class="quarter-item">
+                    <h3>35. يوم الطفل - 20 نوفمبر</h3>
+                    <p><strong>المكان:</strong> مكان ترفيهي عائلي | <strong>الحضور:</strong> 200</p>
+                    <p>منشطين أطفال محترفين، محطات ألعاب، هدايا</p>
                 </div>
                 <div class="quarter-item">
                     <h3>36. يوم التطوع - 5 ديسمبر</h3>
-                    <p><strong>المكان:</strong> موقع مجتمعي</p>
-                    <p><strong>الخدمات:</strong> حافلتين نقل، قمصان متطوعين، مستلزمات النشاط، صناديق غداء</p>
+                    <p><strong>المكان:</strong> موقع مجتمعي | <strong>الحضور:</strong> 80</p>
+                    <p>حافلتين نقل، قمصان متطوعين، صناديق غداء</p>
                 </div>
             </div>
         </div>
-        <div class="bottom-border">
-            <div class="green-line"></div>
-            <div class="blue-line"></div>
-        </div>
+        <div class="bottom-border"></div>
         <div class="page-number">22</div>
     </div>
 
-    <!-- Slide 23: Q4 Events 37-40 -->
+    <!-- ==================== SLIDE 23: Q4 EVENTS 37-40 ==================== -->
     <div class="slide content-slide">
-        <div class="top-border">
-            <div class="green-bar"></div>
-            <div class="blue-bar"></div>
-        </div>
+        <div class="top-border"></div>
         <div class="content">
-            <h1>فعاليات الربع الرابع (تابع)</h1>
+            <h1>فعاليات الربع الرابع</h1>
             <div class="quarter-grid">
                 <div class="quarter-item">
-                    <h3>37. اليوم العالمي لمكافحة الفساد - 9 ديسمبر</h3>
-                    <p><strong>المكان:</strong> مقر SERA</p>
-                    <p><strong>الخدمات:</strong> متحدث أخلاقيات/نزاهة، توقيع تعهدات، كتيبات توعية</p>
+                    <h3>37. مكافحة الفساد - 9 ديسمبر</h3>
+                    <p><strong>المكان:</strong> مقر SERA | <strong>الحضور:</strong> 200</p>
+                    <p>متحدث أخلاقيات/نزاهة، توقيع تعهدات، كتيبات</p>
                 </div>
                 <div class="quarter-item">
-                    <h3>38. أنشطة ومبادرات التحول - Q4</h3>
-                    <p><strong>المكان:</strong> مقر SERA - منطقة معارض</p>
-                    <p><strong>الخدمات:</strong> جلسات خبراء، ورش تحول، أنشطة تفكير تصميمي</p>
+                    <h3>38. أنشطة التحول - Q4</h3>
+                    <p><strong>المكان:</strong> مقر SERA | <strong>الحضور:</strong> 200</p>
+                    <p>جلسات خبراء، ورش تحول، أنشطة تفكير تصميمي</p>
                 </div>
                 <div class="quarter-item">
-                    <h3>39. مسابقة المكتب المثالي - Q4</h3>
-                    <p><strong>المكان:</strong> مقر SERA - جميع المكاتب</p>
-                    <p><strong>الخدمات:</strong> برنامج تقييم، لجنة تحكيم، حفل توزيع جوائز، كؤوس</p>
+                    <h3>39. المكتب المثالي - Q4</h3>
+                    <p><strong>المكان:</strong> جميع مكاتب SERA | <strong>الحضور:</strong> 200</p>
+                    <p>برنامج تقييم، لجنة تحكيم، حفل جوائز، كؤوس</p>
                 </div>
-                <div class="quarter-item" style="background: linear-gradient(135deg, #9c27b0, #7b1fa2);">
-                    <h3>40. اليوم العالمي للغة العربية - 18 ديسمبر</h3>
-                    <p><strong>المكان:</strong> مكان ثقافي</p>
-                    <p><strong>الخدمات:</strong> شاعر ضيف، ورشة خط عربي، أمسية شعرية، برنامج ثقافي</p>
+                <div class="quarter-item" style="background: linear-gradient(135deg, #6b46c1, #805ad5);">
+                    <h3>40. يوم اللغة العربية - 18 ديسمبر</h3>
+                    <p><strong>المكان:</strong> مكان ثقافي | <strong>الحضور:</strong> 200</p>
+                    <p>شاعر ضيف، ورشة خط عربي، أمسية شعرية</p>
                 </div>
             </div>
         </div>
-        <div class="bottom-border">
-            <div class="green-line"></div>
-            <div class="blue-line"></div>
-        </div>
+        <div class="bottom-border"></div>
         <div class="page-number">23</div>
     </div>
 
-    <!-- Slide 24: Q4 Event 41 - Year-End Celebration -->
+    <!-- ==================== SLIDE 24: Q4 EVENT 41 ==================== -->
     <div class="slide content-slide">
-        <div class="top-border">
-            <div class="green-bar"></div>
-            <div class="blue-bar"></div>
-        </div>
+        <div class="top-border"></div>
         <div class="content">
             <h1>41. حفل نهاية العام</h1>
             <div class="info-grid">
                 <div class="info-card">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    </div>
                     <h3>التاريخ</h3>
                     <p>أواخر ديسمبر</p>
                 </div>
-                <div class="info-card light">
-                    <h3>الفئة</h3>
-                    <p>حفل فاخر</p>
-                </div>
                 <div class="info-card">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
                     <h3>الحضور المتوقع</h3>
                     <p>300 شخص</p>
+                </div>
+                <div class="info-card">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <h3>المستوى</h3>
+                    <p>كبير (Major)</p>
                 </div>
             </div>
             <div class="detail-box">
@@ -1264,71 +1243,60 @@
             </div>
             <div class="detail-box">
                 <h4>الخدمات الرئيسية</h4>
-                <p>فرقة موسيقية فاخرة + عروض، 15 جائزة سنوية، فيديو مراجعة العام، هدايا فاخرة، مقدم برامج محترف. يجب الحجز قبل 3 أشهر</p>
+                <p>فرقة موسيقية فاخرة + عروض، 15 جائزة سنوية، فيديو مراجعة العام، هدايا فاخرة، مقدم برامج. <strong>يجب الحجز قبل 3 أشهر</strong></p>
             </div>
         </div>
-        <div class="bottom-border">
-            <div class="green-line"></div>
-            <div class="blue-line"></div>
-        </div>
+        <div class="bottom-border"></div>
         <div class="page-number">24</div>
     </div>
 
-    <!-- Slide 25: Sports Section Divider -->
-    <div class="slide section-divider">
-        <div class="top-border">
-            <div class="green-bar"></div>
-            <div class="blue-bar"></div>
+    <!-- ==================== SLIDE 25: SPORTS SECTION DIVIDER ==================== -->
+    <div class="slide">
+        <div class="top-border"></div>
+        <div class="section-divider">
+            <h2>القسم الخامس</h2>
+            <h1>الفعاليات الرياضية</h1>
+            <p class="subtitle">3 فعاليات رياضية</p>
         </div>
-        <h2>القسم الخامس</h2>
-        <h1>الفعاليات الرياضية</h1>
-        <p style="font-size: 24px; color: #666; margin-top: 20px;">3 فعاليات رياضية</p>
-        <div class="bottom-border">
-            <div class="green-line"></div>
-            <div class="blue-line"></div>
-        </div>
+        <div class="bottom-border"></div>
         <div class="page-number">25</div>
     </div>
 
-    <!-- Slide 26: Sports Events -->
+    <!-- ==================== SLIDE 26: SPORTS EVENTS ==================== -->
     <div class="slide content-slide">
-        <div class="top-border">
-            <div class="green-bar"></div>
-            <div class="blue-bar"></div>
-        </div>
+        <div class="top-border"></div>
         <div class="content">
             <h1>الفعاليات الرياضية</h1>
-            <div class="event-card" style="background: linear-gradient(135deg, #4caf50, #388e3c);">
-                <h2>S1. بطولة كرة القدم</h2>
-                <p><strong>الموعد:</strong> يحدد لاحقاً (3 عطلات نهاية أسبوع) | <strong>الفئة:</strong> مسابقة رياضية</p>
-                <p><strong>الحضور:</strong> 150 شخص | <strong>المستوى:</strong> كبير (Major)</p>
-            </div>
-            <div class="event-card" style="background: linear-gradient(135deg, #2196f3, #1976d2);">
-                <h2>S2. بطولة البادل</h2>
-                <p><strong>الموعد:</strong> يحدد لاحقاً (عطلتي نهاية أسبوع) | <strong>الفئة:</strong> مسابقة رياضية</p>
-                <p><strong>الحضور:</strong> 20 شخص | <strong>المستوى:</strong> متوسط (Medium)</p>
-            </div>
-            <div class="event-card" style="background: linear-gradient(135deg, #ff9800, #f57c00);">
-                <h2>S3. تحدي المشي + جمعة سيرا</h2>
-                <p><strong>الموعد:</strong> ربع سنوي + سنوي | <strong>الفئة:</strong> رياضة وعافية</p>
-                <p><strong>الحضور:</strong> 200 شخص | <strong>المستوى:</strong> متوسط (Medium)</p>
+            <div class="sports-grid">
+                <div class="sports-card" style="background: linear-gradient(135deg, #2f855a 0%, #48bb78 100%);">
+                    <h2>S1. بطولة كرة القدم</h2>
+                    <p><strong>الموعد:</strong> يحدد لاحقاً (3 عطلات نهاية أسبوع) | <strong>الفئة:</strong> مسابقة رياضية | <strong>الحضور:</strong> 150 شخص | <strong>المستوى:</strong> كبير</p>
+                </div>
+                <div class="sports-card" style="background: linear-gradient(135deg, #2b6cb0 0%, #4299e1 100%);">
+                    <h2>S2. بطولة البادل</h2>
+                    <p><strong>الموعد:</strong> يحدد لاحقاً (عطلتي نهاية أسبوع) | <strong>الفئة:</strong> مسابقة رياضية | <strong>الحضور:</strong> 20 شخص | <strong>المستوى:</strong> متوسط</p>
+                </div>
+                <div class="sports-card" style="background: linear-gradient(135deg, #c05621 0%, #ed8936 100%);">
+                    <h2>S3. تحدي المشي + جمعة سيرا</h2>
+                    <p><strong>الموعد:</strong> ربع سنوي + سنوي | <strong>الفئة:</strong> رياضة وعافية | <strong>الحضور:</strong> 200 شخص | <strong>المستوى:</strong> متوسط</p>
+                </div>
             </div>
         </div>
-        <div class="bottom-border">
-            <div class="green-line"></div>
-            <div class="blue-line"></div>
-        </div>
+        <div class="bottom-border"></div>
         <div class="page-number">26</div>
     </div>
 
-    <!-- Slide 27: Thank You -->
+    <!-- ==================== SLIDE 27: THANK YOU ==================== -->
     <div class="slide title-slide">
-        <div class="image-section"></div>
         <div class="content-section">
             <h1>SERA 2026</h1>
             <h2>هيئة تنظيم الكهرباء</h2>
             <h3>شكراً لكم</h3>
-            <p style="font-size: 24px; color: #666; margin-top: 40px;">انتهى</p>
+            <p style="font-size: 22px; color: #718096; margin-top: 30px;">انتهى</p>
+        </div>
+        <div class="image-section">
+            <div class="bg"></div>
+            <div class="arrow-shape"></div>
         </div>
         <div class="green-corner"></div>
     </div>
