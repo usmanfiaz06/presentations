@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Persona AI — Platform Proposal by Idrak AI</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+  :root {
+    --yellow: #FFE600;
+    --black: #1A1A2E;
+    --dark: #16213E;
+    --accent: #FFE600;
+    --gray-100: #F8F9FA;
+    --gray-200: #E9ECEF;
+    --gray-300: #DEE2E6;
+    --gray-500: #6C757D;
+    --gray-700: #495057;
+    --gray-900: #212529;
+    --white: #FFFFFF;
+  }
+
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: var(--gray-900);
+    background: white;
+    font-size: 10pt;
+    line-height: 1.6;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    padding: 0;
+    page-break-after: always;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ==================== COVER PAGE ==================== */
+  .cover {
+    background: var(--black);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0;
+  }
+
+  .cover-top {
+    padding: 50px 60px 0;
+  }
+
+  .cover-logo {
+    font-size: 14pt;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--yellow);
+    margin-bottom: 10px;
+  }
+
+  .cover-divider {
+    width: 80px;
+    height: 4px;
+    background: var(--yellow);
+    margin: 20px 0 0;
+  }
+
+  .cover-main {
+    padding: 0 60px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .cover-label {
+    font-size: 9pt;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--yellow);
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  .cover-title {
+    font-size: 42pt;
+    font-weight: 900;
+    line-height: 1.05;
+    margin-bottom: 15px;
+    letter-spacing: -1px;
+  }
+
+  .cover-title span {
+    color: var(--yellow);
+  }
+
+  .cover-subtitle {
+    font-size: 14pt;
+    font-weight: 300;
+    color: #B0B0C0;
+    line-height: 1.5;
+    max-width: 480px;
+    margin-bottom: 40px;
+  }
+
+  .cover-meta-bar {
+    display: flex;
+    gap: 40px;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    padding-top: 25px;
+  }
+
+  .cover-meta-item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cover-meta-label {
+    font-size: 7pt;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--yellow);
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .cover-meta-value {
+    font-size: 10pt;
+    font-weight: 500;
+    color: #E0E0E0;
+  }
+
+  .cover-bottom {
+    background: var(--yellow);
+    padding: 30px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .cover-bottom-left {
+    font-size: 11pt;
+    font-weight: 800;
+    color: var(--black);
+    letter-spacing: 1px;
+  }
+
+  .cover-bottom-right {
+    font-size: 8pt;
+    color: var(--black);
+    font-weight: 500;
+    text-align: right;
+    line-height: 1.5;
+  }
+
+  /* ==================== INNER PAGES ==================== */
+  .inner {
+    padding: 45px 55px;
+    background: white;
+  }
+
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid var(--black);
+    padding-bottom: 12px;
+    margin-bottom: 35px;
+  }
+
+  .page-header-logo {
+    font-size: 9pt;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--black);
+  }
+
+  .page-header-right {
+    font-size: 7.5pt;
+    color: var(--gray-500);
+    font-weight: 500;
+  }
+
+  .section-number {
+    font-size: 48pt;
+    font-weight: 900;
+    color: var(--yellow);
+    line-height: 1;
+    margin-bottom: 0;
+  }
+
+  .section-title {
+    font-size: 22pt;
+    font-weight: 900;
+    color: var(--black);
+    line-height: 1.15;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+  }
+
+  .section-tagline {
+    font-size: 9pt;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--gray-500);
+    font-weight: 600;
+    margin-bottom: 25px;
+  }
+
+  h3 {
+    font-size: 12pt;
+    font-weight: 800;
+    color: var(--black);
+    margin-bottom: 8px;
+    margin-top: 18px;
+  }
+
+  h4 {
+    font-size: 10pt;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 5px;
+    margin-top: 12px;
+  }
+
+  p, li {
+    font-size: 9.5pt;
+    line-height: 1.65;
+    color: var(--gray-700);
+  }
+
+  p { margin-bottom: 10px; }
+
+  ul {
+    padding-left: 18px;
+    margin-bottom: 12px;
+  }
+
+  li { margin-bottom: 4px; }
+
+  .highlight-box {
+    background: var(--black);
+    color: white;
+    padding: 22px 28px;
+    border-radius: 6px;
+    margin: 18px 0;
+  }
+
+  .highlight-box h4 {
+    color: var(--yellow);
+    font-size: 10pt;
+    margin-top: 0;
+    margin-bottom: 8px;
+  }
+
+  .highlight-box p, .highlight-box li {
+    color: #D0D0DD;
+    font-size: 9pt;
+  }
+
+  .yellow-box {
+    background: var(--yellow);
+    padding: 20px 26px;
+    border-radius: 6px;
+    margin: 18px 0;
+  }
+
+  .yellow-box h4 {
+    color: var(--black);
+    margin-top: 0;
+    margin-bottom: 6px;
+  }
+
+  .yellow-box p, .yellow-box li {
+    color: var(--black);
+    font-size: 9pt;
+  }
+
+  .stat-row {
+    display: flex;
+    gap: 20px;
+    margin: 18px 0;
+  }
+
+  .stat-card {
+    flex: 1;
+    background: var(--gray-100);
+    border-left: 4px solid var(--yellow);
+    padding: 16px 18px;
+    border-radius: 0 6px 6px 0;
+  }
+
+  .stat-card .number {
+    font-size: 22pt;
+    font-weight: 900;
+    color: var(--black);
+    line-height: 1.1;
+  }
+
+  .stat-card .label {
+    font-size: 7.5pt;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--gray-500);
+    font-weight: 600;
+    margin-top: 4px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+    font-size: 9pt;
+  }
+
+  table thead th {
+    background: var(--black);
+    color: white;
+    font-weight: 700;
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 8pt;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  table tbody td {
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--gray-200);
+    color: var(--gray-700);
+  }
+
+  table tbody tr:nth-child(even) {
+    background: var(--gray-100);
+  }
+
+  .two-col {
+    display: flex;
+    gap: 25px;
+  }
+
+  .two-col > div {
+    flex: 1;
+  }
+
+  .tag {
+    display: inline-block;
+    background: var(--yellow);
+    color: var(--black);
+    font-size: 7pt;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-right: 5px;
+    margin-bottom: 4px;
+  }
+
+  .tag-dark {
+    background: var(--black);
+    color: var(--yellow);
+  }
+
+  .timeline-item {
+    display: flex;
+    margin-bottom: 14px;
+    align-items: flex-start;
+  }
+
+  .timeline-marker {
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    background: var(--yellow);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 11pt;
+    color: var(--black);
+    margin-right: 16px;
+    margin-top: 2px;
+  }
+
+  .timeline-content h4 {
+    margin-top: 0;
+    margin-bottom: 3px;
+  }
+
+  .timeline-content p {
+    font-size: 8.5pt;
+    margin-bottom: 2px;
+  }
+
+  .page-footer {
+    position: absolute;
+    bottom: 25px;
+    left: 55px;
+    right: 55px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 7pt;
+    color: var(--gray-500);
+    border-top: 1px solid var(--gray-200);
+    padding-top: 10px;
+  }
+
+  .arch-box {
+    border: 2px solid var(--black);
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin: 8px 0;
+    text-align: center;
+  }
+
+  .arch-box.yellow-border {
+    border-color: var(--yellow);
+    background: #FFFDE7;
+  }
+
+  .arch-arrow {
+    text-align: center;
+    font-size: 16pt;
+    color: var(--gray-500);
+    margin: 4px 0;
+  }
+
+  .feature-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 15px 0;
+  }
+
+  .feature-card {
+    flex: 1 1 45%;
+    background: var(--gray-100);
+    border-radius: 6px;
+    padding: 16px;
+    border-top: 3px solid var(--yellow);
+  }
+
+  .feature-card h4 {
+    margin-top: 0;
+    font-size: 9.5pt;
+  }
+
+  .feature-card p {
+    font-size: 8.5pt;
+    margin-bottom: 0;
+  }
+
+  .toc-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--gray-200);
+  }
+
+  .toc-number {
+    font-size: 18pt;
+    font-weight: 900;
+    color: var(--yellow);
+    margin-right: 16px;
+    width: 40px;
+  }
+
+  .toc-title {
+    font-size: 11pt;
+    font-weight: 700;
+    color: var(--black);
+    flex-grow: 1;
+  }
+
+  .toc-page {
+    font-size: 10pt;
+    font-weight: 600;
+    color: var(--gray-500);
+  }
+</style>
+</head>
+<body>
+
+<!-- =============================== PAGE 1: COVER =============================== -->
+<div class="page cover">
+  <div class="cover-top">
+    <div class="cover-logo">IDRAK AI</div>
+    <div class="cover-divider"></div>
+  </div>
+
+  <div class="cover-main">
+    <div class="cover-label">Technical Proposal &amp; Scope Document</div>
+    <div class="cover-title">
+      Persona <span>AI</span>
+    </div>
+    <div class="cover-subtitle">
+      An AI-Powered Adaptive Social Skills Training Platform — Personalized Coaching Through Intelligent Voice Characters, Gamified Learning Pathways &amp; Enterprise Team Development
+    </div>
+    <div class="cover-meta-bar">
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Prepared By</div>
+        <div class="cover-meta-value">Idrak AI — Engineering Division</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Date</div>
+        <div class="cover-meta-value">February 2026</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Version</div>
+        <div class="cover-meta-value">1.0 — Final</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Classification</div>
+        <div class="cover-meta-value">Confidential</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cover-bottom">
+    <div class="cover-bottom-left">IDRAK AI</div>
+    <div class="cover-bottom-right">
+      Building Intelligent Systems<br>
+      That Understand People
+    </div>
+  </div>
+</div>
+
+<!-- =============================== PAGE 2: TABLE OF CONTENTS =============================== -->
+<div class="page inner">
+  <div class="page-header">
+    <div class="page-header-logo">Idrak AI</div>
+    <div class="page-header-right">Persona AI — Technical Proposal</div>
+  </div>
+
+  <div class="section-number">00</div>
+  <div class="section-title">Table of Contents</div>
+  <div class="section-tagline">Document Navigation</div>
+
+  <div style="margin-top: 20px;">
+    <div class="toc-item"><span class="toc-number">01</span><span class="toc-title">Executive Summary</span><span class="toc-page">03</span></div>
+    <div class="toc-item"><span class="toc-number">02</span><span class="toc-title">Market Opportunity &amp; Problem Statement</span><span class="toc-page">03</span></div>
+    <div class="toc-item"><span class="toc-number">03</span><span class="toc-title">Platform Vision &amp; Core Features</span><span class="toc-page">04</span></div>
+    <div class="toc-item"><span class="toc-number">04</span><span class="toc-title">Technical Architecture &amp; AI/ML Pipeline</span><span class="toc-page">05</span></div>
+    <div class="toc-item"><span class="toc-number">05</span><span class="toc-title">AI Character Engine &amp; Voice System</span><span class="toc-page">06</span></div>
+    <div class="toc-item"><span class="toc-number">06</span><span class="toc-title">Gamification &amp; Adaptive Learning Engine</span><span class="toc-page">07</span></div>
+    <div class="toc-item"><span class="toc-number">07</span><span class="toc-title">Monetization &amp; Pricing Strategy</span><span class="toc-page">08</span></div>
+    <div class="toc-item"><span class="toc-number">08</span><span class="toc-title">B2B Enterprise Module</span><span class="toc-page">08</span></div>
+    <div class="toc-item"><span class="toc-number">09</span><span class="toc-title">Technology Stack &amp; Infrastructure</span><span class="toc-page">09</span></div>
+    <div class="toc-item"><span class="toc-number">10</span><span class="toc-title">Development Roadmap &amp; Timelines</span><span class="toc-page">10</span></div>
+    <div class="toc-item"><span class="toc-number">11</span><span class="toc-title">Budget Breakdown</span><span class="toc-page">11</span></div>
+    <div class="toc-item"><span class="toc-number">12</span><span class="toc-title">Risk Mitigation &amp; Quality Assurance</span><span class="toc-page">12</span></div>
+    <div class="toc-item"><span class="toc-number">13</span><span class="toc-title">Why Idrak AI</span><span class="toc-page">12</span></div>
+  </div>
+
+  <div class="highlight-box" style="margin-top: 35px;">
+    <h4>Document Purpose</h4>
+    <p>This document serves as the comprehensive technical proposal and scope definition for the design, development, and deployment of the Persona AI platform. It details the system architecture, AI/ML pipeline, feature specifications, development timelines, and commercial framework for building an enterprise-grade, AI-powered social skills training platform.</p>
+  </div>
+
+  <div class="page-footer">
+    <span>Confidential — Idrak AI &copy; 2026</span>
+    <span>Page 2 of 12</span>
+  </div>
+</div>
+
+<!-- =============================== PAGE 3: EXECUTIVE SUMMARY + MARKET =============================== -->
+<div class="page inner">
+  <div class="page-header">
+    <div class="page-header-logo">Idrak AI</div>
+    <div class="page-header-right">Persona AI — Technical Proposal</div>
+  </div>
+
+  <div class="section-number">01</div>
+  <div class="section-title">Executive Summary</div>
+  <div class="section-tagline">The Opportunity at a Glance</div>
+
+  <p><strong>Persona AI</strong> is a next-generation, AI-powered social skills training platform that delivers hyper-personalized coaching through adaptive voice-based AI characters. Users describe their real-world interpersonal challenges — managing up, public speaking, conflict resolution, networking — and the platform constructs a tailored learning pathway powered by conversational AI agents whose personalities, communication styles, and difficulty levels dynamically adapt to the learner's needs.</p>
+
+  <p>The platform combines <strong>large language model orchestration</strong>, <strong>real-time text-to-speech synthesis</strong>, <strong>behavioral analytics</strong>, and <strong>gamification mechanics</strong> into a unified experience that makes social skills training as engaging and measurable as fitness tracking.</p>
+
+  <div class="stat-row">
+    <div class="stat-card">
+      <div class="number">$38B</div>
+      <div class="label">Corporate Training Market (2026)</div>
+    </div>
+    <div class="stat-card">
+      <div class="number">72%</div>
+      <div class="label">Employers cite soft skills gaps</div>
+    </div>
+    <div class="stat-card">
+      <div class="number">4.2x</div>
+      <div class="label">ROI on communication training</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 25px;">
+    <div class="section-number">02</div>
+    <div class="section-title">Market Opportunity</div>
+    <div class="section-tagline">Problem &amp; Demand Landscape</div>
+  </div>
+
+  <h3>The Problem</h3>
+  <p>Traditional social skills training relies on expensive executive coaches ($300–$500/hr), generic e-learning modules with no interactivity, or roleplay workshops that are logistically difficult to scale. The result: 85% of professionals report receiving no structured social skills development despite it being the #1 predictor of career advancement.</p>
+
+  <div class="two-col">
+    <div>
+      <h4>Current Market Gaps</h4>
+      <ul>
+        <li><strong>No personalization</strong> — one-size-fits-all content ignores individual contexts</li>
+        <li><strong>No practice environment</strong> — learners read theory but never practice in realistic scenarios</li>
+        <li><strong>No measurement</strong> — no data-driven tracking of soft skill improvement</li>
+        <li><strong>No scalability</strong> — coaching is expensive and doesn't scale for enterprise teams</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Persona AI's Differentiators</h4>
+      <ul>
+        <li><strong>Adaptive AI Characters</strong> — realistic practice partners that mirror real-world dynamics</li>
+        <li><strong>Personality Tuning</strong> — dial an AI character to match a tough manager or colleague</li>
+        <li><strong>Voice-First Interaction</strong> — natural spoken conversation, not text quizzes</li>
+        <li><strong>Gamified Progression</strong> — leaderboards, XP, streaks, and skill badges</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Confidential — Idrak AI &copy; 2026</span>
+    <span>Page 3 of 12</span>
+  </div>
+</div>
+
+<!-- =============================== PAGE 4: PLATFORM VISION & FEATURES =============================== -->
+<div class="page inner">
+  <div class="page-header">
+    <div class="page-header-logo">Idrak AI</div>
+    <div class="page-header-right">Persona AI — Technical Proposal</div>
+  </div>
+
+  <div class="section-number">03</div>
+  <div class="section-title">Platform Vision &amp;<br>Core Features</div>
+  <div class="section-tagline">What We're Building</div>
+
+  <h3>User Journey Overview</h3>
+  <p>A user signs up, completes a brief diagnostic assessment (5 min), describes their social skills challenge in natural language, and immediately receives a personalized learning pathway. They then engage in voice-based roleplay sessions with AI characters that adapt in real-time, receive post-session analytics, earn XP and badges, and track their progression on leaderboards.</p>
+
+  <div class="feature-grid">
+    <div class="feature-card">
+      <h4>1. Onboarding &amp; Diagnostic Engine</h4>
+      <p>NLP-driven intake assessment analyzes user-described challenges. Maps to skill taxonomy (assertiveness, empathy, negotiation, etc.). Generates initial skill profile and recommends learning pathway.</p>
+    </div>
+    <div class="feature-card">
+      <h4>2. Personalized Learning Pathways</h4>
+      <p>Adaptive curriculum engine powered by spaced repetition and mastery-based progression. Dynamically adjusts difficulty, session frequency, and content mix based on performance analytics.</p>
+    </div>
+    <div class="feature-card">
+      <h4>3. AI Character Interactions</h4>
+      <p>Library of AI personas (supportive mentor, tough manager, demanding client, etc.). Users select or customize characters. Voice-first conversations with real-time personality modulation.</p>
+    </div>
+    <div class="feature-card">
+      <h4>4. Personality Tuning System</h4>
+      <p>Slider-based interface to adjust AI character traits: aggression, empathy, formality, patience, directness. Users recreate challenging interpersonal dynamics for targeted practice.</p>
+    </div>
+    <div class="feature-card">
+      <h4>5. Gamification Engine</h4>
+      <p>XP points, skill badges, daily streaks, weekly challenges, and global/team leaderboards. Achievement system tied to measurable skill milestones, not just completion.</p>
+    </div>
+    <div class="feature-card">
+      <h4>6. Post-Session Analytics</h4>
+      <p>AI-generated session debrief: communication score, empathy rating, assertiveness index, areas of improvement, and comparison to previous sessions. Longitudinal progress tracking.</p>
+    </div>
+  </div>
+
+  <div class="yellow-box">
+    <h4>Key Innovation: Contextual Personality Tuning</h4>
+    <p>Unlike generic chatbot interactions, Persona AI allows users to describe a specific real-world person (e.g., "my manager who is passive-aggressive and avoids direct feedback") and the system constructs a behaviorally accurate AI character for targeted practice. This is achieved through a combination of personality trait vectorization, behavioral prompt engineering, and dynamic TTS voice modulation.</p>
+  </div>
+
+  <div class="page-footer">
+    <span>Confidential — Idrak AI &copy; 2026</span>
+    <span>Page 4 of 12</span>
+  </div>
+</div>
+
+<!-- =============================== PAGE 5: TECHNICAL ARCHITECTURE =============================== -->
+<div class="page inner">
+  <div class="page-header">
+    <div class="page-header-logo">Idrak AI</div>
+    <div class="page-header-right">Persona AI — Technical Proposal</div>
+  </div>
+
+  <div class="section-number">04</div>
+  <div class="section-title">Technical Architecture<br>&amp; AI/ML Pipeline</div>
+  <div class="section-tagline">System Design Deep Dive</div>
+
+  <h3>High-Level Architecture</h3>
+  <p>The platform follows a microservices-oriented architecture deployed on cloud infrastructure with the following layers:</p>
+
+  <div class="arch-box" style="background: var(--black); color: white; font-weight: 700;">CLIENT LAYER — React/Next.js Web App + React Native Mobile (Future)</div>
+  <div class="arch-arrow">&#8595;</div>
+  <div class="arch-box yellow-border"><strong>API GATEWAY</strong> — Authentication, Rate Limiting, Request Routing (Node.js / Express)</div>
+  <div class="arch-arrow">&#8595;</div>
+
+  <div style="display: flex; gap: 10px; margin: 6px 0;">
+    <div class="arch-box" style="flex:1; font-size: 8pt;"><strong>Conversation Engine</strong><br>LLM Orchestration + Memory</div>
+    <div class="arch-box" style="flex:1; font-size: 8pt;"><strong>Character Engine</strong><br>Persona Generation + Tuning</div>
+    <div class="arch-box" style="flex:1; font-size: 8pt;"><strong>Voice Pipeline</strong><br>STT → LLM → TTS</div>
+    <div class="arch-box" style="flex:1; font-size: 8pt;"><strong>Analytics Engine</strong><br>Scoring + Progress</div>
+  </div>
+
+  <div class="arch-arrow">&#8595;</div>
+  <div class="arch-box" style="background: var(--gray-100);"><strong>DATA LAYER</strong> — PostgreSQL (Users, Progress) | Redis (Sessions, Cache) | S3 (Audio, Assets)</div>
+
+  <h3>AI/ML Pipeline — Detailed</h3>
+
+  <div class="two-col">
+    <div>
+      <h4>1. Natural Language Understanding (NLU)</h4>
+      <p>User input is processed through a multi-stage pipeline: (a) speech-to-text transcription via Whisper (open-source), (b) intent classification and entity extraction, (c) emotional tone analysis using fine-tuned sentiment models, (d) context-aware response generation through LLM with personality-conditioned system prompts.</p>
+
+      <h4>2. Personality Vectorization</h4>
+      <p>Each AI character is defined by a 12-dimensional personality vector mapped to the Big Five personality model (OCEAN) plus domain-specific traits: directness, patience, formality, humor, assertiveness, empathy, volatility. This vector conditions the LLM's system prompt and modulates TTS voice parameters (pitch, speed, warmth).</p>
+    </div>
+    <div>
+      <h4>3. Conversation Memory &amp; State</h4>
+      <p>Sessions maintain short-term memory (current conversation context) and long-term memory (user history, past sessions, skill progression). Implemented via a sliding window context with retrieval-augmented generation (RAG) for pulling relevant past session insights.</p>
+
+      <h4>4. Skill Assessment Engine</h4>
+      <p>Post-session, the conversation transcript is analyzed by a dedicated evaluation LLM call that scores across 8 dimensions: clarity, empathy, assertiveness, active listening, conflict resolution, persuasion, emotional regulation, and adaptability. Scores feed into the adaptive learning algorithm.</p>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <h4>Open-Source First Approach</h4>
+    <p>We leverage open-source and cost-effective models to maximize the $25K budget: <strong>Whisper</strong> (STT), <strong>ElevenLabs / Coqui TTS</strong> (voice synthesis), <strong>Llama 3.x / Mistral</strong> (conversation LLM — self-hosted or API), and <strong>open embedding models</strong> for RAG. This eliminates expensive per-API-call costs at scale while maintaining quality.</p>
+  </div>
+
+  <div class="page-footer">
+    <span>Confidential — Idrak AI &copy; 2026</span>
+    <span>Page 5 of 12</span>
+  </div>
+</div>
+
+<!-- =============================== PAGE 6: AI CHARACTER + VOICE =============================== -->
+<div class="page inner">
+  <div class="page-header">
+    <div class="page-header-logo">Idrak AI</div>
+    <div class="page-header-right">Persona AI — Technical Proposal</div>
+  </div>
+
+  <div class="section-number">05</div>
+  <div class="section-title">AI Character Engine<br>&amp; Voice System</div>
+  <div class="section-tagline">The Heart of the Experience</div>
+
+  <h3>Character Archetypes (MVP)</h3>
+  <p>The platform ships with 6 pre-designed character archetypes, each with distinct personality vectors, voice profiles, and visual avatars:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Character</th>
+        <th>Archetype</th>
+        <th>Key Traits</th>
+        <th>Use Case</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Alex</strong></td>
+        <td>Supportive Mentor</td>
+        <td>High empathy, patient, warm</td>
+        <td>Building confidence, gentle feedback</td>
+      </tr>
+      <tr>
+        <td><strong>Morgan</strong></td>
+        <td>Tough Manager</td>
+        <td>Direct, demanding, low patience</td>
+        <td>Managing up, handling criticism</td>
+      </tr>
+      <tr>
+        <td><strong>Jordan</strong></td>
+        <td>Difficult Client</td>
+        <td>Volatile, high expectations</td>
+        <td>Client management, de-escalation</td>
+      </tr>
+      <tr>
+        <td><strong>Sam</strong></td>
+        <td>Peer Collaborator</td>
+        <td>Casual, opinionated, competitive</td>
+        <td>Team dynamics, negotiation</td>
+      </tr>
+      <tr>
+        <td><strong>Dr. Reeves</strong></td>
+        <td>Executive Coach</td>
+        <td>Analytical, strategic, Socratic</td>
+        <td>Leadership skills, strategic comms</td>
+      </tr>
+      <tr>
+        <td><strong>Casey</strong></td>
+        <td>Interview Panel</td>
+        <td>Formal, evaluative, structured</td>
+        <td>Interview prep, presentations</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Personality Tuning Interface</h3>
+  <p>Users can modify any archetype or create custom characters using slider-based controls:</p>
+
+  <div class="two-col">
+    <div>
+      <h4>Tunable Parameters</h4>
+      <ul>
+        <li><strong>Directness</strong> — Blunt ←→ Diplomatic</li>
+        <li><strong>Patience</strong> — Impatient ←→ Very patient</li>
+        <li><strong>Warmth</strong> — Cold/formal ←→ Friendly/warm</li>
+        <li><strong>Assertiveness</strong> — Passive ←→ Aggressive</li>
+        <li><strong>Emotional Range</strong> — Stoic ←→ Expressive</li>
+        <li><strong>Formality</strong> — Casual ←→ Corporate</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Technical Implementation</h4>
+      <p>Slider values (0–100) are normalized into a personality vector that dynamically generates the LLM system prompt using a template engine. The same vector modulates ElevenLabs TTS parameters:</p>
+      <ul>
+        <li>Voice <strong>stability</strong> maps to emotional range</li>
+        <li>Voice <strong>speed</strong> maps to patience level</li>
+        <li>Voice <strong>style</strong> maps to warmth/formality</li>
+        <li>Voice <strong>selection</strong> maps to archetype gender/age</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Voice Pipeline Architecture</h3>
+  <div style="display: flex; gap: 8px; margin: 10px 0; align-items: center;">
+    <div class="arch-box" style="flex:1; font-size: 8pt; padding: 10px;"><strong>User Speech</strong><br>Microphone Input</div>
+    <div style="font-size: 14pt; color: var(--gray-500);">→</div>
+    <div class="arch-box yellow-border" style="flex:1; font-size: 8pt; padding: 10px;"><strong>Whisper STT</strong><br>Transcription</div>
+    <div style="font-size: 14pt; color: var(--gray-500);">→</div>
+    <div class="arch-box" style="flex:1; font-size: 8pt; padding: 10px;"><strong>LLM Engine</strong><br>Character Response</div>
+    <div style="font-size: 14pt; color: var(--gray-500);">→</div>
+    <div class="arch-box yellow-border" style="flex:1; font-size: 8pt; padding: 10px;"><strong>ElevenLabs TTS</strong><br>Voice Synthesis</div>
+    <div style="font-size: 14pt; color: var(--gray-500);">→</div>
+    <div class="arch-box" style="flex:1; font-size: 8pt; padding: 10px;"><strong>Audio Output</strong><br>Streamed to User</div>
+  </div>
+  <p style="font-size: 8pt; color: var(--gray-500); margin-top: 4px;"><strong>Target latency:</strong> &lt;1.5s end-to-end using streaming TTS and LLM token streaming. WebSocket connection maintains persistent session state.</p>
+
+  <div class="page-footer">
+    <span>Confidential — Idrak AI &copy; 2026</span>
+    <span>Page 6 of 12</span>
+  </div>
+</div>
+
+<!-- =============================== PAGE 7: GAMIFICATION =============================== -->
+<div class="page inner">
+  <div class="page-header">
+    <div class="page-header-logo">Idrak AI</div>
+    <div class="page-header-right">Persona AI — Technical Proposal</div>
+  </div>
+
+  <div class="section-number">06</div>
+  <div class="section-title">Gamification &amp;<br>Adaptive Learning Engine</div>
+  <div class="section-tagline">Engagement-Driven Skill Development</div>
+
+  <h3>Gamification Mechanics</h3>
+  <p>The gamification system is grounded in self-determination theory (SDT) and flow theory — targeting intrinsic motivation through autonomy, competence, and relatedness. Every mechanic maps to a measurable learning outcome.</p>
+
+  <div class="two-col">
+    <div>
+      <h4>Core Mechanics</h4>
+      <table>
+        <thead><tr><th>Mechanic</th><th>Implementation</th></tr></thead>
+        <tbody>
+          <tr><td><strong>XP System</strong></td><td>Points earned per session based on performance scores across 8 skill dimensions</td></tr>
+          <tr><td><strong>Skill Badges</strong></td><td>Unlocked at mastery thresholds (e.g., "Empathy Expert" at 80% empathy score avg over 10 sessions)</td></tr>
+          <tr><td><strong>Daily Streaks</strong></td><td>Consecutive day engagement with streak multipliers (1.5x at 7 days, 2x at 30 days)</td></tr>
+          <tr><td><strong>Leaderboards</strong></td><td>Global, weekly, team-based. Ranked by XP, skill scores, or streak length</td></tr>
+          <tr><td><strong>Weekly Challenges</strong></td><td>Themed scenarios (e.g., "Negotiation Week") with bonus XP rewards</td></tr>
+          <tr><td><strong>Level Progression</strong></td><td>Novice → Intermediate → Advanced → Expert → Master per skill domain</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <h4>Adaptive Learning Algorithm</h4>
+      <p>The pathway engine uses a modified <strong>knowledge tracing</strong> model (BKT variant) combined with spaced repetition scheduling:</p>
+      <ul>
+        <li><strong>Skill State Estimation</strong> — Bayesian probability model tracks mastery per skill dimension</li>
+        <li><strong>Difficulty Calibration</strong> — AI character difficulty auto-adjusts based on estimated skill state</li>
+        <li><strong>Session Scheduling</strong> — Optimal review intervals calculated per skill to maximize retention</li>
+        <li><strong>Content Recommendation</strong> — Scenario selection weighted by weakest skills and user goals</li>
+      </ul>
+
+      <div class="yellow-box" style="margin-top: 15px;">
+        <h4>Progression Formula</h4>
+        <p><strong>XP = Base(50) × Performance(0.5–2.0) × Streak(1.0–2.0) × Difficulty(0.8–1.5)</strong></p>
+        <p>Where Performance = weighted average across 8 skill dimensions scored by evaluation LLM</p>
+      </div>
+    </div>
+  </div>
+
+  <h3>Learning Pathway Example</h3>
+  <div style="background: var(--gray-100); padding: 18px; border-radius: 6px; margin-top: 8px;">
+    <p style="margin-bottom: 8px;"><strong>User Goal:</strong> "I want to get better at pushing back on my manager's unreasonable deadlines"</p>
+    <p style="font-size: 8.5pt;"><span class="tag">WEEK 1-2</span> <strong>Assertiveness Foundations</strong> — Practice with supportive "Alex" character at low difficulty. Learn assertion frameworks.<br>
+    <span class="tag">WEEK 3-4</span> <strong>Escalating Difficulty</strong> — Switch to "Morgan" (tough manager). Increase directness/impatience sliders. Practice pushback scenarios.<br>
+    <span class="tag">WEEK 5-6</span> <strong>Custom Tuning</strong> — User tunes character to match their actual manager's personality. Realistic rehearsal.<br>
+    <span class="tag">WEEK 7-8</span> <strong>Mastery &amp; Generalization</strong> — Cross-context practice. Different scenarios. Assessment to confirm skill transfer.</p>
+  </div>
+
+  <div class="page-footer">
+    <span>Confidential — Idrak AI &copy; 2026</span>
+    <span>Page 7 of 12</span>
+  </div>
+</div>
+
+<!-- =============================== PAGE 8: MONETIZATION + B2B =============================== -->
+<div class="page inner">
+  <div class="page-header">
+    <div class="page-header-logo">Idrak AI</div>
+    <div class="page-header-right">Persona AI — Technical Proposal</div>
+  </div>
+
+  <div class="section-number">07</div>
+  <div class="section-title">Monetization &amp;<br>Pricing Strategy</div>
+  <div class="section-tagline">Revenue Model</div>
+
+  <table>
+    <thead>
+      <tr><th style="width:20%">Feature</th><th style="width:25%">Free Tier</th><th style="width:25%">Premium ($19/mo)</th><th style="width:30%">Enterprise (Custom)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Sessions / month</strong></td><td>5 sessions</td><td>Unlimited</td><td>Unlimited</td></tr>
+      <tr><td><strong>AI Characters</strong></td><td>2 (Alex + Sam)</td><td>All 6 + Custom</td><td>All + Custom corporate personas</td></tr>
+      <tr><td><strong>Personality Tuning</strong></td><td>Basic (3 sliders)</td><td>Full (6 sliders)</td><td>Full + API-driven presets</td></tr>
+      <tr><td><strong>Voice Interaction</strong></td><td>Text only</td><td>Full voice (STT+TTS)</td><td>Full voice + custom voices</td></tr>
+      <tr><td><strong>Analytics</strong></td><td>Basic score</td><td>Full 8-dimension dashboard</td><td>Team analytics + manager reports</td></tr>
+      <tr><td><strong>Gamification</strong></td><td>XP + Streaks</td><td>Full (badges, leaderboards)</td><td>Team leaderboards + goals</td></tr>
+      <tr><td><strong>Learning Pathways</strong></td><td>Auto-generated</td><td>Custom + AI recommended</td><td>Manager-defined team pathways</td></tr>
+      <tr><td><strong>Support</strong></td><td>Community</td><td>Priority email</td><td>Dedicated CSM + SLA</td></tr>
+    </tbody>
+  </table>
+
+  <div style="margin-top: 30px;">
+    <div class="section-number">08</div>
+    <div class="section-title">B2B Enterprise Module</div>
+    <div class="section-tagline">Team Development at Scale</div>
+  </div>
+
+  <p>The enterprise module enables companies to onboard teams, define skill development goals, and track progress through a dedicated admin dashboard.</p>
+
+  <div class="two-col">
+    <div>
+      <h4>Admin Dashboard Features</h4>
+      <ul>
+        <li><strong>Team Management</strong> — Add/remove members, create teams (e.g., "Engineering", "Sales")</li>
+        <li><strong>Goal Setting</strong> — Define team-level skill goals (e.g., "Improve presentation skills by Q3")</li>
+        <li><strong>Progress Tracking</strong> — Aggregate skill scores, session completion rates, engagement metrics</li>
+        <li><strong>Custom Scenarios</strong> — Upload company-specific scenarios (e.g., handling customer complaints per brand guidelines)</li>
+        <li><strong>Reporting</strong> — Exportable PDF/CSV reports for HR and L&amp;D teams</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Enterprise Integration Points</h4>
+      <ul>
+        <li><strong>SSO</strong> — SAML 2.0 / OAuth 2.0 integration</li>
+        <li><strong>LMS Integration</strong> — SCORM/xAPI compatibility for existing learning management systems</li>
+        <li><strong>HRIS Sync</strong> — Team structure auto-sync from HR systems</li>
+        <li><strong>API Access</strong> — REST API for custom integrations and automation</li>
+        <li><strong>Data Residency</strong> — Configurable data storage region for compliance</li>
+      </ul>
+
+      <div class="highlight-box" style="margin-top: 12px;">
+        <h4>Enterprise Example</h4>
+        <p>"A 50-person engineering team at Company X wants to improve presentation skills before a major product launch. The L&amp;D manager sets a team goal, assigns the 'Casey — Interview Panel' character with custom scenarios around technical presentations, and tracks weekly progress via the admin dashboard."</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Confidential — Idrak AI &copy; 2026</span>
+    <span>Page 8 of 12</span>
+  </div>
+</div>
+
+<!-- =============================== PAGE 9: TECH STACK =============================== -->
+<div class="page inner">
+  <div class="page-header">
+    <div class="page-header-logo">Idrak AI</div>
+    <div class="page-header-right">Persona AI — Technical Proposal</div>
+  </div>
+
+  <div class="section-number">09</div>
+  <div class="section-title">Technology Stack &amp;<br>Infrastructure</div>
+  <div class="section-tagline">Engineering Decisions</div>
+
+  <div class="two-col">
+    <div>
+      <h3>Frontend</h3>
+      <table>
+        <thead><tr><th>Component</th><th>Technology</th></tr></thead>
+        <tbody>
+          <tr><td>Framework</td><td>Next.js 15 (React 19)</td></tr>
+          <tr><td>State Management</td><td>Zustand</td></tr>
+          <tr><td>UI Library</td><td>Tailwind CSS + Shadcn/UI</td></tr>
+          <tr><td>Real-time Comms</td><td>WebSocket (Socket.io)</td></tr>
+          <tr><td>Audio Handling</td><td>Web Audio API + MediaRecorder</td></tr>
+          <tr><td>Charts/Analytics</td><td>Recharts</td></tr>
+          <tr><td>Authentication</td><td>NextAuth.js</td></tr>
+        </tbody>
+      </table>
+
+      <h3>AI / ML Layer</h3>
+      <table>
+        <thead><tr><th>Component</th><th>Technology</th></tr></thead>
+        <tbody>
+          <tr><td>Core LLM</td><td>Llama 3.1 70B / Mistral Large (via Groq or Together AI)</td></tr>
+          <tr><td>Speech-to-Text</td><td>OpenAI Whisper (open-source, self-hosted)</td></tr>
+          <tr><td>Text-to-Speech</td><td>ElevenLabs API (production) / Coqui TTS (fallback)</td></tr>
+          <tr><td>Character Visuals</td><td>Ready Player Me / Custom SVG Avatars</td></tr>
+          <tr><td>Embeddings</td><td>BGE-base / Nomic-embed for RAG</td></tr>
+          <tr><td>Evaluation</td><td>Dedicated LLM scoring pipeline</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <h3>Backend</h3>
+      <table>
+        <thead><tr><th>Component</th><th>Technology</th></tr></thead>
+        <tbody>
+          <tr><td>Runtime</td><td>Node.js 22 (Express/Fastify)</td></tr>
+          <tr><td>Database</td><td>PostgreSQL 16 (Supabase)</td></tr>
+          <tr><td>Cache / Sessions</td><td>Redis (Upstash)</td></tr>
+          <tr><td>File Storage</td><td>AWS S3 / Cloudflare R2</td></tr>
+          <tr><td>Job Queue</td><td>BullMQ (Redis-backed)</td></tr>
+          <tr><td>API Docs</td><td>OpenAPI 3.0 / Swagger</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Infrastructure &amp; DevOps</h3>
+      <table>
+        <thead><tr><th>Component</th><th>Technology</th></tr></thead>
+        <tbody>
+          <tr><td>Hosting</td><td>Vercel (Frontend) + Railway/Render (Backend)</td></tr>
+          <tr><td>CI/CD</td><td>GitHub Actions</td></tr>
+          <tr><td>Monitoring</td><td>Sentry + LogTail</td></tr>
+          <tr><td>Analytics</td><td>PostHog (open-source)</td></tr>
+          <tr><td>Email</td><td>Resend</td></tr>
+          <tr><td>Payments</td><td>Stripe</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="yellow-box" style="margin-top: 10px;">
+    <h4>Why This Stack?</h4>
+    <p>Every choice optimizes for three constraints: <strong>(1) cost efficiency</strong> — leveraging free tiers (Vercel, Supabase, Upstash), open-source models, and usage-based pricing; <strong>(2) speed to market</strong> — battle-tested tools with rich ecosystems reduce development time; <strong>(3) scalability</strong> — all components are horizontally scalable when the platform grows past MVP.</p>
+  </div>
+
+  <div class="page-footer">
+    <span>Confidential — Idrak AI &copy; 2026</span>
+    <span>Page 9 of 12</span>
+  </div>
+</div>
+
+<!-- =============================== PAGE 10: ROADMAP =============================== -->
+<div class="page inner">
+  <div class="page-header">
+    <div class="page-header-logo">Idrak AI</div>
+    <div class="page-header-right">Persona AI — Technical Proposal</div>
+  </div>
+
+  <div class="section-number">10</div>
+  <div class="section-title">Development Roadmap<br>&amp; Timelines</div>
+  <div class="section-tagline">20-Week Delivery Plan</div>
+
+  <div class="timeline-item">
+    <div class="timeline-marker">1</div>
+    <div class="timeline-content">
+      <h4>Phase 1 — Foundation &amp; Core Architecture <span class="tag">WEEKS 1–4</span></h4>
+      <p>Project setup, CI/CD pipeline, database schema design, authentication system (NextAuth + Supabase), base UI framework (Tailwind + Shadcn), API architecture, WebSocket infrastructure for real-time communication.</p>
+      <p><strong>Deliverables:</strong> Authenticated app shell, API gateway, database schema, dev/staging environments.</p>
+    </div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-marker">2</div>
+    <div class="timeline-content">
+      <h4>Phase 2 — AI Engine &amp; Voice Pipeline <span class="tag">WEEKS 5–8</span></h4>
+      <p>LLM integration (Llama/Mistral via Groq), character persona system with personality vectorization, prompt engineering for all 6 archetypes, Whisper STT integration, ElevenLabs TTS integration, streaming voice pipeline, personality tuning slider system.</p>
+      <p><strong>Deliverables:</strong> Working voice conversation with AI characters, personality tuning interface, end-to-end voice pipeline.</p>
+    </div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-marker">3</div>
+    <div class="timeline-content">
+      <h4>Phase 3 — Learning Pathways &amp; Analytics <span class="tag">WEEKS 9–12</span></h4>
+      <p>Onboarding diagnostic assessment, NLP-driven skill mapping, adaptive learning pathway engine, session evaluation pipeline (8-dimension scoring), post-session analytics dashboard, progress tracking with longitudinal charts.</p>
+      <p><strong>Deliverables:</strong> Personalized pathway generation, session scoring, analytics dashboard.</p>
+    </div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-marker">4</div>
+    <div class="timeline-content">
+      <h4>Phase 4 — Gamification &amp; Monetization <span class="tag">WEEKS 13–16</span></h4>
+      <p>XP system, badges, streaks, leaderboards (global + weekly), level progression system, Stripe payment integration, free/premium tier gating, subscription management, premium feature unlocks.</p>
+      <p><strong>Deliverables:</strong> Full gamification system, payment flow, tier-based access control.</p>
+    </div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-marker">5</div>
+    <div class="timeline-content">
+      <h4>Phase 5 — B2B Enterprise &amp; Launch <span class="tag">WEEKS 17–20</span></h4>
+      <p>Enterprise admin dashboard, team management, goal setting, team leaderboards, aggregate reporting, SSO integration, QA testing, performance optimization, security audit, staging → production deployment, launch.</p>
+      <p><strong>Deliverables:</strong> Enterprise module, production deployment, launch-ready platform.</p>
+    </div>
+  </div>
+
+  <div class="stat-row" style="margin-top: 15px;">
+    <div class="stat-card">
+      <div class="number">20</div>
+      <div class="label">Weeks Total</div>
+    </div>
+    <div class="stat-card">
+      <div class="number">5</div>
+      <div class="label">Development Phases</div>
+    </div>
+    <div class="stat-card">
+      <div class="number">Week 8</div>
+      <div class="label">First Usable Demo</div>
+    </div>
+    <div class="stat-card">
+      <div class="number">Week 20</div>
+      <div class="label">Production Launch</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Confidential — Idrak AI &copy; 2026</span>
+    <span>Page 10 of 12</span>
+  </div>
+</div>
+
+<!-- =============================== PAGE 11: BUDGET =============================== -->
+<div class="page inner">
+  <div class="page-header">
+    <div class="page-header-logo">Idrak AI</div>
+    <div class="page-header-right">Persona AI — Technical Proposal</div>
+  </div>
+
+  <div class="section-number">11</div>
+  <div class="section-title">Budget Breakdown</div>
+  <div class="section-tagline">Investment Allocation — $25,000 USD</div>
+
+  <table>
+    <thead>
+      <tr><th style="width:8%">#</th><th style="width:35%">Category</th><th style="width:35%">Scope</th><th style="width:12%">Amount</th><th style="width:10%">%</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>1</strong></td>
+        <td><strong>Frontend Development</strong></td>
+        <td>Next.js app, UI/UX, responsive design, all user-facing screens, audio integration</td>
+        <td><strong>$5,500</strong></td>
+        <td>22%</td>
+      </tr>
+      <tr>
+        <td><strong>2</strong></td>
+        <td><strong>Backend &amp; API Development</strong></td>
+        <td>API architecture, database, auth, WebSocket, job queues, payment integration</td>
+        <td><strong>$4,500</strong></td>
+        <td>18%</td>
+      </tr>
+      <tr>
+        <td><strong>3</strong></td>
+        <td><strong>AI/ML Engine Development</strong></td>
+        <td>LLM integration, character system, personality tuning, evaluation pipeline, RAG</td>
+        <td><strong>$5,000</strong></td>
+        <td>20%</td>
+      </tr>
+      <tr>
+        <td><strong>4</strong></td>
+        <td><strong>Voice Pipeline (STT + TTS)</strong></td>
+        <td>Whisper integration, ElevenLabs integration, streaming audio, latency optimization</td>
+        <td><strong>$2,500</strong></td>
+        <td>10%</td>
+      </tr>
+      <tr>
+        <td><strong>5</strong></td>
+        <td><strong>Gamification System</strong></td>
+        <td>XP, badges, leaderboards, streaks, progression engine, adaptive learning</td>
+        <td><strong>$2,000</strong></td>
+        <td>8%</td>
+      </tr>
+      <tr>
+        <td><strong>6</strong></td>
+        <td><strong>B2B Enterprise Module</strong></td>
+        <td>Admin dashboard, team mgmt, goal setting, reporting, SSO</td>
+        <td><strong>$2,500</strong></td>
+        <td>10%</td>
+      </tr>
+      <tr>
+        <td><strong>7</strong></td>
+        <td><strong>UI/UX Design</strong></td>
+        <td>Wireframes, high-fidelity mockups, design system, character avatars</td>
+        <td><strong>$1,500</strong></td>
+        <td>6%</td>
+      </tr>
+      <tr>
+        <td><strong>8</strong></td>
+        <td><strong>QA, Testing &amp; DevOps</strong></td>
+        <td>Testing, CI/CD, monitoring setup, security review, deployment</td>
+        <td><strong>$1,000</strong></td>
+        <td>4%</td>
+      </tr>
+      <tr>
+        <td><strong>9</strong></td>
+        <td><strong>Third-Party Services (6 months)</strong></td>
+        <td>ElevenLabs API, Groq/Together AI credits, Vercel, Supabase, hosting</td>
+        <td><strong>$500</strong></td>
+        <td>2%</td>
+      </tr>
+      <tr style="background: var(--black); color: white; font-weight: 700;">
+        <td></td>
+        <td style="color: var(--yellow);">TOTAL</td>
+        <td></td>
+        <td style="color: var(--yellow);"><strong>$25,000</strong></td>
+        <td style="color: var(--yellow);">100%</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="highlight-box">
+    <h4>Budget Optimization Strategy</h4>
+    <p>This aggressive budget is achievable through: <strong>(1)</strong> leveraging open-source models (Whisper, Llama/Mistral) to eliminate per-query LLM costs during development; <strong>(2)</strong> using free-tier infrastructure (Vercel, Supabase, Upstash) for MVP; <strong>(3)</strong> a lean, senior-heavy team where every engineer covers multiple domains; <strong>(4)</strong> using pre-built UI components (Shadcn) to accelerate frontend development by ~40%.</p>
+  </div>
+
+  <h3>Payment Schedule</h3>
+  <table>
+    <thead><tr><th>Milestone</th><th>Trigger</th><th>Amount</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Milestone 1</strong></td><td>Project kickoff + Phase 1 completion (Week 4)</td><td>$7,500 (30%)</td></tr>
+      <tr><td><strong>Milestone 2</strong></td><td>Phase 2–3 completion — Working AI voice demo (Week 12)</td><td>$7,500 (30%)</td></tr>
+      <tr><td><strong>Milestone 3</strong></td><td>Phase 4–5 completion — Full platform launch (Week 20)</td><td>$10,000 (40%)</td></tr>
+    </tbody>
+  </table>
+
+  <div class="page-footer">
+    <span>Confidential — Idrak AI &copy; 2026</span>
+    <span>Page 11 of 12</span>
+  </div>
+</div>
+
+<!-- =============================== PAGE 12: RISK + WHY IDRAK =============================== -->
+<div class="page inner">
+  <div class="page-header">
+    <div class="page-header-logo">Idrak AI</div>
+    <div class="page-header-right">Persona AI — Technical Proposal</div>
+  </div>
+
+  <div class="section-number">12</div>
+  <div class="section-title">Risk Mitigation &amp;<br>Quality Assurance</div>
+  <div class="section-tagline">Proactive Risk Management</div>
+
+  <table>
+    <thead><tr><th style="width:22%">Risk</th><th style="width:15%">Severity</th><th style="width:33%">Mitigation Strategy</th><th style="width:30%">Contingency</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Voice latency &gt; 2s</strong></td>
+        <td><span class="tag">HIGH</span></td>
+        <td>Streaming TTS, LLM token streaming, WebSocket persistent connection, edge caching</td>
+        <td>Fallback to text-first mode with optional voice replay</td>
+      </tr>
+      <tr>
+        <td><strong>LLM response quality</strong></td>
+        <td><span class="tag">MEDIUM</span></td>
+        <td>Extensive prompt engineering, character-specific system prompts, evaluation guardrails</td>
+        <td>A/B test multiple LLM providers; upgrade to larger model if needed</td>
+      </tr>
+      <tr>
+        <td><strong>ElevenLabs API costs at scale</strong></td>
+        <td><span class="tag">MEDIUM</span></td>
+        <td>Free tier uses text-only; voice reserved for premium. Cache common phrases.</td>
+        <td>Migrate to open-source Coqui TTS for cost-heavy use cases</td>
+      </tr>
+      <tr>
+        <td><strong>Scope creep</strong></td>
+        <td><span class="tag">HIGH</span></td>
+        <td>Strict phase-gated delivery, weekly sprint reviews, documented change request process</td>
+        <td>Defer non-MVP features to v1.1 backlog</td>
+      </tr>
+      <tr>
+        <td><strong>Data privacy / GDPR</strong></td>
+        <td><span class="tag">MEDIUM</span></td>
+        <td>No voice data stored permanently; session transcripts encrypted at rest; user data deletion API</td>
+        <td>Engage compliance consultant pre-launch if targeting EU market</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="margin-top: 28px;">
+    <div class="section-number">13</div>
+    <div class="section-title">Why Idrak AI</div>
+    <div class="section-tagline">Your Engineering Partner</div>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <h4>Our Capabilities</h4>
+      <ul>
+        <li><strong>AI-Native Team</strong> — Deep expertise in LLM integration, prompt engineering, and conversational AI systems</li>
+        <li><strong>Full-Stack Delivery</strong> — End-to-end product development from design to deployment</li>
+        <li><strong>Voice AI Experience</strong> — Prior work with real-time voice pipelines, STT/TTS integration</li>
+        <li><strong>Rapid Prototyping</strong> — Lean methodology, fast iteration, working demos within weeks</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Our Commitment</h4>
+      <ul>
+        <li><strong>Transparent Communication</strong> — Weekly progress reports, demo sessions, open Slack channel</li>
+        <li><strong>Quality First</strong> — Code reviews, automated testing, staging environment for every release</li>
+        <li><strong>Post-Launch Support</strong> — 30-day post-launch support included in scope</li>
+        <li><strong>Knowledge Transfer</strong> — Full documentation, codebase walkthrough, and handoff support</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="yellow-box" style="margin-top: 20px; text-align: center;">
+    <h4 style="font-size: 13pt;">Ready to Build the Future of Social Skills Training</h4>
+    <p style="font-size: 10pt; margin-bottom: 0;"><strong>Idrak AI</strong> — Building Intelligent Systems That Understand People<br><br>
+    Contact: <strong>hello@idrak.ai</strong> &nbsp;&nbsp;|&nbsp;&nbsp; Let's build Persona AI together.</p>
+  </div>
+
+  <div class="page-footer">
+    <span>Confidential — Idrak AI &copy; 2026</span>
+    <span>Page 12 of 12</span>
+  </div>
+</div>
+
+</body>
+</html>
