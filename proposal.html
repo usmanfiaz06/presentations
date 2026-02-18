@@ -47,12 +47,11 @@
 
   /* ==================== COVER PAGE ==================== */
   .cover {
-    background: var(--black);
+    background-color: var(--black);
     color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     padding: 0;
+    height: 297mm;
+    position: relative;
   }
 
   .cover-top {
@@ -76,11 +75,7 @@
   }
 
   .cover-main {
-    padding: 0 60px;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    padding: 80px 60px 0;
   }
 
   .cover-label {
@@ -143,9 +138,10 @@
   .cover-bottom {
     background: var(--yellow);
     padding: 30px 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
   }
 
   .cover-bottom-left {
@@ -745,7 +741,7 @@
 
   <div class="highlight-box">
     <h4>Open-Source First Approach</h4>
-    <p>We leverage open-source and cost-effective models to maximize the $25K budget: <strong>Whisper</strong> (STT), <strong>ElevenLabs / Coqui TTS</strong> (voice synthesis), <strong>Llama 3.x / Mistral</strong> (conversation LLM — self-hosted or API), and <strong>open embedding models</strong> for RAG. This eliminates expensive per-API-call costs at scale while maintaining quality.</p>
+    <p>We leverage open-source and cost-effective models to maximize the $32K budget: <strong>Whisper</strong> (STT), <strong>ElevenLabs / Coqui TTS</strong> (voice synthesis), <strong>Llama 3.x / Mistral</strong> (conversation LLM — self-hosted or API), and <strong>open embedding models</strong> for RAG. This eliminates expensive per-API-call costs at scale while maintaining quality.</p>
   </div>
 
   <div class="page-footer">
@@ -1084,12 +1080,12 @@
 
   <div class="section-number">10</div>
   <div class="section-title">Development Roadmap<br>&amp; Timelines</div>
-  <div class="section-tagline">20-Week Delivery Plan</div>
+  <div class="section-tagline">13-Week Accelerated Delivery Plan</div>
 
   <div class="timeline-item">
     <div class="timeline-marker">1</div>
     <div class="timeline-content">
-      <h4>Phase 1 — Foundation &amp; Core Architecture <span class="tag">WEEKS 1–4</span></h4>
+      <h4>Phase 1 — Foundation &amp; Core Architecture <span class="tag">WEEKS 1–2</span></h4>
       <p>Project setup, CI/CD pipeline, database schema design, authentication system (NextAuth + Supabase), base UI framework (Tailwind + Shadcn), API architecture, WebSocket infrastructure for real-time communication.</p>
       <p><strong>Deliverables:</strong> Authenticated app shell, API gateway, database schema, dev/staging environments.</p>
     </div>
@@ -1098,7 +1094,7 @@
   <div class="timeline-item">
     <div class="timeline-marker">2</div>
     <div class="timeline-content">
-      <h4>Phase 2 — AI Engine &amp; Voice Pipeline <span class="tag">WEEKS 5–8</span></h4>
+      <h4>Phase 2 — AI Engine &amp; Voice Pipeline <span class="tag">WEEKS 3–5</span></h4>
       <p>LLM integration (Llama/Mistral via Groq), character persona system with personality vectorization, prompt engineering for all 6 archetypes, Whisper STT integration, ElevenLabs TTS integration, streaming voice pipeline, personality tuning slider system.</p>
       <p><strong>Deliverables:</strong> Working voice conversation with AI characters, personality tuning interface, end-to-end voice pipeline.</p>
     </div>
@@ -1107,33 +1103,33 @@
   <div class="timeline-item">
     <div class="timeline-marker">3</div>
     <div class="timeline-content">
-      <h4>Phase 3 — Learning Pathways &amp; Analytics <span class="tag">WEEKS 9–12</span></h4>
-      <p>Onboarding diagnostic assessment, NLP-driven skill mapping, adaptive learning pathway engine, session evaluation pipeline (8-dimension scoring), post-session analytics dashboard, progress tracking with longitudinal charts.</p>
-      <p><strong>Deliverables:</strong> Personalized pathway generation, session scoring, analytics dashboard.</p>
+      <h4>Phase 3 — Learning Pathways, Analytics &amp; Gamification <span class="tag">WEEKS 6–9</span></h4>
+      <p>Onboarding diagnostic assessment, NLP-driven skill mapping, adaptive learning pathway engine, session evaluation pipeline (8-dimension scoring), post-session analytics dashboard, XP system, badges, streaks, leaderboards, level progression, Stripe payment integration, free/premium tier gating.</p>
+      <p><strong>Deliverables:</strong> Personalized pathways, session scoring, analytics dashboard, full gamification, payment flow.</p>
     </div>
   </div>
 
   <div class="timeline-item">
     <div class="timeline-marker">4</div>
     <div class="timeline-content">
-      <h4>Phase 4 — Gamification &amp; Monetization <span class="tag">WEEKS 13–16</span></h4>
-      <p>XP system, badges, streaks, leaderboards (global + weekly), level progression system, Stripe payment integration, free/premium tier gating, subscription management, premium feature unlocks.</p>
-      <p><strong>Deliverables:</strong> Full gamification system, payment flow, tier-based access control.</p>
+      <h4>Phase 4 — B2B Enterprise Module <span class="tag">WEEKS 10–11</span></h4>
+      <p>Enterprise admin dashboard, team management, goal setting, team leaderboards, aggregate reporting, SSO integration, custom corporate scenarios, exportable reports for HR and L&amp;D teams.</p>
+      <p><strong>Deliverables:</strong> Enterprise admin dashboard, team management, reporting suite.</p>
     </div>
   </div>
 
   <div class="timeline-item">
     <div class="timeline-marker">5</div>
     <div class="timeline-content">
-      <h4>Phase 5 — B2B Enterprise &amp; Launch <span class="tag">WEEKS 17–20</span></h4>
-      <p>Enterprise admin dashboard, team management, goal setting, team leaderboards, aggregate reporting, SSO integration, QA testing, performance optimization, security audit, staging → production deployment, launch.</p>
-      <p><strong>Deliverables:</strong> Enterprise module, production deployment, launch-ready platform.</p>
+      <h4>Phase 5 — QA, Optimization &amp; Launch <span class="tag">WEEKS 12–13</span></h4>
+      <p>End-to-end QA testing, performance optimization, voice latency tuning, security audit, staging → production deployment, launch readiness review, go-live.</p>
+      <p><strong>Deliverables:</strong> Production deployment, launch-ready platform, documentation handoff.</p>
     </div>
   </div>
 
   <div class="stat-row" style="margin-top: 15px;">
     <div class="stat-card">
-      <div class="number">20</div>
+      <div class="number">13</div>
       <div class="label">Weeks Total</div>
     </div>
     <div class="stat-card">
@@ -1141,11 +1137,11 @@
       <div class="label">Development Phases</div>
     </div>
     <div class="stat-card">
-      <div class="number">Week 8</div>
+      <div class="number">Week 5</div>
       <div class="label">First Usable Demo</div>
     </div>
     <div class="stat-card">
-      <div class="number">Week 20</div>
+      <div class="number">Week 13</div>
       <div class="label">Production Launch</div>
     </div>
   </div>
@@ -1165,7 +1161,7 @@
 
   <div class="section-number">11</div>
   <div class="section-title">Budget Breakdown</div>
-  <div class="section-tagline">Investment Allocation — $25,000 USD</div>
+  <div class="section-tagline">Investment Allocation — $32,000 USD</div>
 
   <table>
     <thead>
@@ -1176,57 +1172,57 @@
         <td><strong>1</strong></td>
         <td><strong>Frontend Development</strong></td>
         <td>Next.js app, UI/UX, responsive design, all user-facing screens, audio integration</td>
-        <td><strong>$5,500</strong></td>
+        <td><strong>$7,000</strong></td>
         <td>22%</td>
       </tr>
       <tr>
         <td><strong>2</strong></td>
         <td><strong>Backend &amp; API Development</strong></td>
         <td>API architecture, database, auth, WebSocket, job queues, payment integration</td>
-        <td><strong>$4,500</strong></td>
-        <td>18%</td>
+        <td><strong>$5,500</strong></td>
+        <td>17%</td>
       </tr>
       <tr>
         <td><strong>3</strong></td>
         <td><strong>AI/ML Engine Development</strong></td>
         <td>LLM integration, character system, personality tuning, evaluation pipeline, RAG</td>
-        <td><strong>$5,000</strong></td>
+        <td><strong>$6,500</strong></td>
         <td>20%</td>
       </tr>
       <tr>
         <td><strong>4</strong></td>
         <td><strong>Voice Pipeline (STT + TTS)</strong></td>
         <td>Whisper integration, ElevenLabs integration, streaming audio, latency optimization</td>
-        <td><strong>$2,500</strong></td>
-        <td>10%</td>
+        <td><strong>$3,500</strong></td>
+        <td>11%</td>
       </tr>
       <tr>
         <td><strong>5</strong></td>
         <td><strong>Gamification System</strong></td>
         <td>XP, badges, leaderboards, streaks, progression engine, adaptive learning</td>
-        <td><strong>$2,000</strong></td>
+        <td><strong>$2,500</strong></td>
         <td>8%</td>
       </tr>
       <tr>
         <td><strong>6</strong></td>
         <td><strong>B2B Enterprise Module</strong></td>
         <td>Admin dashboard, team mgmt, goal setting, reporting, SSO</td>
-        <td><strong>$2,500</strong></td>
-        <td>10%</td>
+        <td><strong>$3,000</strong></td>
+        <td>9%</td>
       </tr>
       <tr>
         <td><strong>7</strong></td>
         <td><strong>UI/UX Design</strong></td>
         <td>Wireframes, high-fidelity mockups, design system, character avatars</td>
-        <td><strong>$1,500</strong></td>
+        <td><strong>$2,000</strong></td>
         <td>6%</td>
       </tr>
       <tr>
         <td><strong>8</strong></td>
         <td><strong>QA, Testing &amp; DevOps</strong></td>
         <td>Testing, CI/CD, monitoring setup, security review, deployment</td>
-        <td><strong>$1,000</strong></td>
-        <td>4%</td>
+        <td><strong>$1,500</strong></td>
+        <td>5%</td>
       </tr>
       <tr>
         <td><strong>9</strong></td>
@@ -1239,7 +1235,7 @@
         <td></td>
         <td style="color: var(--yellow);">TOTAL</td>
         <td></td>
-        <td style="color: var(--yellow);"><strong>$25,000</strong></td>
+        <td style="color: var(--yellow);"><strong>$32,000</strong></td>
         <td style="color: var(--yellow);">100%</td>
       </tr>
     </tbody>
@@ -1247,16 +1243,16 @@
 
   <div class="highlight-box">
     <h4>Budget Optimization Strategy</h4>
-    <p>This aggressive budget is achievable through: <strong>(1)</strong> leveraging open-source models (Whisper, Llama/Mistral) to eliminate per-query LLM costs during development; <strong>(2)</strong> using free-tier infrastructure (Vercel, Supabase, Upstash) for MVP; <strong>(3)</strong> a lean, senior-heavy team where every engineer covers multiple domains; <strong>(4)</strong> using pre-built UI components (Shadcn) to accelerate frontend development by ~40%.</p>
+    <p>This budget is optimized through: <strong>(1)</strong> leveraging open-source models (Whisper, Llama/Mistral) to eliminate per-query LLM costs during development; <strong>(2)</strong> using free-tier infrastructure (Vercel, Supabase, Upstash) for MVP; <strong>(3)</strong> a lean, senior-heavy team where every engineer covers multiple domains; <strong>(4)</strong> using pre-built UI components (Shadcn) to accelerate frontend development by ~40%.</p>
   </div>
 
   <h3>Payment Schedule</h3>
   <table>
     <thead><tr><th>Milestone</th><th>Trigger</th><th>Amount</th></tr></thead>
     <tbody>
-      <tr><td><strong>Milestone 1</strong></td><td>Project kickoff + Phase 1 completion (Week 4)</td><td>$7,500 (30%)</td></tr>
-      <tr><td><strong>Milestone 2</strong></td><td>Phase 2–3 completion — Working AI voice demo (Week 12)</td><td>$7,500 (30%)</td></tr>
-      <tr><td><strong>Milestone 3</strong></td><td>Phase 4–5 completion — Full platform launch (Week 20)</td><td>$10,000 (40%)</td></tr>
+      <tr><td><strong>Milestone 1</strong></td><td>Project kickoff + Phase 1 completion (Week 2)</td><td>$9,600 (30%)</td></tr>
+      <tr><td><strong>Milestone 2</strong></td><td>Phase 2–3 completion — Working AI voice demo (Week 9)</td><td>$9,600 (30%)</td></tr>
+      <tr><td><strong>Milestone 3</strong></td><td>Phase 4–5 completion — Full platform launch (Week 13)</td><td>$12,800 (40%)</td></tr>
     </tbody>
   </table>
 
